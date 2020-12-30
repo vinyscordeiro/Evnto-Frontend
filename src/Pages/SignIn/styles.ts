@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import background1 from '../../assets/background1.jpg';
 import {Link} from 'react-router-dom';
-
+import {shade} from 'polished';
 
 export const Container = styled.div`
     display: flex;
@@ -66,10 +66,17 @@ export const SignUpDiv = styled(Link)`
     align-items: center;
     text-decoration: none;
     font-size: 18px;
-    color: #fff;
+    color: #E9E9E9;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px; 
 
     > svg {
         margin-left: 8px;
+    }
+
+    &:hover{
+        border-bottom: 2px solid #4661C2;
+        transition: border 0.5s;
     }
 `;
 

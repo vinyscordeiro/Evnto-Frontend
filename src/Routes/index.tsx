@@ -10,7 +10,7 @@ import EventUse from '../Pages/EventUse';
 import MyEvents from '../Pages/MyEvents';
 import RecoverPassword from '../Pages/RecoverPassword';
 import Profile from '../Pages/Profile';
-
+import Participants from '../Pages/Participants';
 
 import Error404 from '../Pages/404';
 
@@ -25,6 +25,7 @@ const Routes: React.FC = () => (
         <Route path="/myevents" component={MyEvents} />
         <Route path="/recoverpassword" component={RecoverPassword} />
         <Route path="/profile" component={Profile} />
+        <Route path="/participants" component={Participants} />
 
         <Route path=""  component={Error404} />
         
