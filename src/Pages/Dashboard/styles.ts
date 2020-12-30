@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 import background1 from '../../assets/background1.jpg';
 
 export const Container = styled.div`
@@ -24,11 +25,14 @@ export const SearchResponseBox = styled.div`
     border-radius: 2px;
 `;
 
-export const SearchResponseUnit = styled.div`
-    background-color: #E9E9E9;
+export const SearchResponseUnit = styled(Link)`
+    cursor: pointer;
     display:flex;
     justify-content: space-around;
     align-items: center;
+    text-decoration: none;
+    color: #000;
+    background-color: #E9E9E9;
     
     height: 48px;
     border-radius: 2px;

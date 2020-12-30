@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled, {css} from 'styled-components';
 import background from '../../assets/background5.jpg';
 
 interface SubtitleProps{
     isSelected ?: Boolean;
+}
+
+interface EventContainerProps{
+    iconRotation ?: Boolean;
 }
 
 export const Container = styled.div`
@@ -35,6 +40,7 @@ export const EventSelection = styled.div`
 `;
 
 export const Subtitle = styled.div<SubtitleProps>`
+    cursor: pointer;
     color: #FFF;
     font-size: 18px;
     margin-right: 32px;
@@ -42,45 +48,58 @@ export const Subtitle = styled.div<SubtitleProps>`
 
     ${ props => props.isSelected && css`
         padding-bottom: 4px;
-        border-bottom: 2px solid #4661C2;
-        color: #4661C2;
+        border-bottom: 3px solid #4661C2;
     `};
 
     &:hover{
+    ${ props => !props.isSelected && css`
         color: #635A5A;
+    `};
+        
     }
 `;
 
-export const Event = styled.div`
-    display: flex;
+export const Event = styled(Link)`
     cursor: pointer;
+    height: 46px;
+    display: flex;
     background-color: #fff;
     border-radius: 1px;
-    height: 46px;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid #fff;
-    border: 4px solid #fff;
+    border: 2px solid #fff;
     margin-top: 4px;
     opacity: 0.9;
+    text-decoration: none;
+    color: #000;
 
     &:hover {
-        border: 4px solid #4661C2;
+        border: 2px solid #4661C2;
         opacity: 1;
     }
 `;
 
-export const EventContainer = styled.div`
+export const EventContainer = styled.div<EventContainerProps>`
     display: flex;
     flex-direction: row;
-`;
+    align-items: center;
+    justify-content: center;
 
-export const EventTitle = styled.div`
-    font-weight: bold;
+    ${props => props.iconRotation && css`
+        font-weight: bold;
+        &:hover{
+            color: #4232FA;
+            > svg {
+                transform: rotate(360deg);
+                transition: transform 3s;
+            }
+        }
+    `};
+   
 `;
 
 export const EventText = styled.div`
-    margin-left: 4px;
+    margin-left: 8px;
 `;
 
 export const EventButton = styled.button`

@@ -17,10 +17,7 @@ import {
     HostPhoto,
     HostName,
     HostDiv,
-    EventLocationDiv,
-    EventLocationInfoDiv,
-    EventLocationInfoTitle,
-    EventLocationAdress,
+    ParticipantLink,
     DefinitionDiv,
     DefinitionTitle,
     DefinitionButton,
@@ -109,14 +106,8 @@ const EventEditting: React.FC = () => {
                             </EventDateEditDiv>
                         </BarComponent>
 
-                        <BarComponent title="Local" >
-                            <EventLocationDiv>
-                               <FiMap size={24} color="#000" />
-                                <EventLocationInfoDiv>
-                                    <EventLocationInfoTitle>Fazenda Mucugê</EventLocationInfoTitle>
-                                    <EventLocationAdress>Rua de santa apolonia 9D Lisboa</EventLocationAdress>
-                                </EventLocationInfoDiv>
-                           </EventLocationDiv>
+                        <BarComponent title="Participantes" >
+                           <ParticipantLink to="/participants">Mais detalhes</ParticipantLink>
                         </BarComponent>
 
                         <BarComponent title="Definições">

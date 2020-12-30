@@ -13,12 +13,12 @@ import {FiCalendar, FiMapPin} from 'react-icons/fi';
 
 const Dashboard:React.FC = () => {
     return (
-    <Container>
+    <Container >
         <Header />
         <Logo>EVNTO</Logo>
         <SearchBox placeholder="Digite o nome do evento que deseja participar"/>
         <SearchResponseBox>
-            <SearchResponseUnit>
+            <SearchResponseUnit to="/eventuse">
                 <Info>Seguindo seus passos</Info>
 
                 <Info>
@@ -31,7 +31,7 @@ const Dashboard:React.FC = () => {
                     Fazenda Mucugê
                 </Info>
             </SearchResponseUnit>
-            <SearchResponseUnit>
+            <SearchResponseUnit to="/eventuse">
                 <Info>Seguindo seus passos</Info>
 
                 <Info>

@@ -1,3 +1,4 @@
+import {useState} from 'react';
 
 import {
     Container,
@@ -7,13 +8,15 @@ import {
     Subtitle,
     Event,
     EventContainer,
-    EventTitle,
     EventText
 } from './styles';
 
 import Header from '../../Components/Header';
 
+import {FiCalendar, FiUser, FiMap, FiClipboard, FiSettings} from 'react-icons/fi';
+
 const MyEvents:React.FC = () => {
+
     return (
         <Container>
             <Header />
@@ -26,61 +29,28 @@ const MyEvents:React.FC = () => {
                     <Subtitle>Eventos Passados</Subtitle>
                 </EventSelection>
               
-                <Event>
+                <Event to="/eventuse">
                     <EventContainer>
-                        <EventTitle>Nome:</EventTitle>
+                        <FiUser size={18}/>
                         <EventText>Vinicius Silva Cordeiro</EventText>
                     </EventContainer>
                     <EventContainer>
-                        <EventTitle>Data:</EventTitle>
+                        <FiCalendar size={18}/>
                         <EventText>20/12/2020</EventText>
                     </EventContainer>
                     <EventContainer>
-                        <EventTitle>Local:</EventTitle>
+                        <FiMap size={18}/>
                         <EventText>Fazenda Mucugê</EventText>
                     </EventContainer>
                     <EventContainer>
-                        <EventTitle>Status:</EventTitle>
+                        <FiClipboard size={18} />
                         <EventText>Disponível</EventText>
                     </EventContainer>
-                </Event>
+                    <EventContainer iconRotation={true}>
+                        <FiSettings size={18} />
+                        <EventText>Definiçoes</EventText>
+                    </EventContainer>
 
-                <Event>
-                    <EventContainer>
-                        <EventTitle>Nome:</EventTitle>
-                        <EventText>Vinicius Silva Cordeiro</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Data:</EventTitle>
-                        <EventText>20/12/2020</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Local:</EventTitle>
-                        <EventText>Fazenda Mucugê</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Status:</EventTitle>
-                        <EventText>Disponível</EventText>
-                    </EventContainer>
-                </Event>
-
-                <Event>
-                    <EventContainer>
-                        <EventTitle>Nome:</EventTitle>
-                        <EventText>Vinicius Silva Cordeiro</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Data:</EventTitle>
-                        <EventText>20/12/2020</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Local:</EventTitle>
-                        <EventText>Fazenda Mucugê</EventText>
-                    </EventContainer>
-                    <EventContainer>
-                        <EventTitle>Status:</EventTitle>
-                        <EventText>Disponível</EventText>
-                    </EventContainer>
                 </Event>
             </EventsDiv>          
 

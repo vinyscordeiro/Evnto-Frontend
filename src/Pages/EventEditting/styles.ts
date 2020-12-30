@@ -1,12 +1,9 @@
 import styled, {css} from 'styled-components';
 import background from '../../assets/background2.jpg';
+import {Link} from 'react-router-dom';
 
 interface DefinitionButtonProps{
     isRed ?: Boolean;
-}
-
-interface SmallTextProps {
-    isBlue?: Boolean;
 }
 
 export const Container = styled.div`
@@ -168,26 +165,16 @@ export const HostPhoto = styled.img`
     border-radius: 50%;
 `;
 
-// Location 
+// Participant 
 
-export const EventLocationDiv = styled.div`
+export const ParticipantLink = styled(Link)`
+    text-decoration: none;
     margin-left: 24px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
+    color: #000;
 
-export const EventLocationInfoDiv = styled.div`
-    margin-left: 16px;
-`;
-
-export const EventLocationInfoTitle = styled.div`
-    font-size: 24px;
-`;
-
-export const EventLocationAdress = styled.div`
-    font-size: 10px;
-    color: #635A5A;
+    &:hover{
+        color: #4E7EF4;
+    }
 `;
 
 // Definition

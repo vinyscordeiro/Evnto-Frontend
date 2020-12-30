@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
+
+interface ButtonProps{
+    isFilled ?: Boolean;
+}
 
 export const Container = styled.div`
     width: 704px; 
@@ -23,10 +27,8 @@ export const SearchBoxInput = styled.input`
 
 `;
 
-export const SearchBoxButton = styled.button`
+export const SearchBoxButton = styled.button<ButtonProps>`
     color: #fff;
-    cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,11 +51,27 @@ export const SearchBoxButton = styled.button`
         box-shadow: inset 0 0 20px rgba(196, 196, 196, .5), 0 0 20px rgba(196, 196, 196, .2);
         outline-color: rgba(196, 196, 196, 0);
         outline-offset: 15px;
-
-        svg {
-            width: 30px;
-            height: 30px;
-            color: #4661C2;
-        }
     }
+
+    ${props => props.isFilled && css` 
+        cursor: pointer;
+        background-color: #43A018;
+        border: 1px solid #43A018;
+        box-shadow: inset 0 0 20px rgba(67, 160, 24, 0.3);
+        outline-color: rgba(67, 160, 24, .5);
+        transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+
+        &:hover {
+            box-shadow: inset 0 0 20px rgba(67, 160, 24, .5), 0 0 20px rgba(67, 160, 24, .2);
+            outline-color: rgba(67, 160, 24, 0);
+            outline-offset: 15px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+                
+            }
+        }
+    `};
 `;

@@ -13,14 +13,20 @@ interface SearchBoxProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 }
 
 const SearchBox: React.FC<SearchBoxProps> = ({placeholder, children, ...rest}) => {
+    /*const [filled, setFilled] = useState(false);
+
+    const handleButton = useCallback(() => {
+        
+    },[filled,setFilled]);*/
+
     return(
         <Container> 
             <SearchBoxForm>
                 <SearchBoxInput placeholder={placeholder}> 
                     {children} 
                 </SearchBoxInput>
-                <SearchBoxButton {...rest}>
-                    <FiSearch size={28} color="#fff"/>
+                <SearchBoxButton {...rest} /*isFilled={filled}*/>
+                    <FiSearch size={28} />
                 </SearchBoxButton>
             </SearchBoxForm>
         </Container>

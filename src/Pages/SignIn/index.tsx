@@ -38,7 +38,7 @@ const SignIn:React.FC = () => {
 
             <SignUpDiv to="/SignUp">
                 Novo por aqui, faça seu cadastro
-                <FiLogIn size={24} color="#fff" />
+                <FiLogIn size={24} />
             </SignUpDiv>
         </SignInContainer>
        
