@@ -22,12 +22,12 @@ const Dashboard:React.FC = () => {
                 <Info>Seguindo seus passos</Info>
 
                 <Info>
-                    <FiCalendar size={24} color="#4661C2"/>
+                    <FiCalendar size={24} />
                     24/12/2020 a 27/12/2020
                 </Info>
                 
                 <Info>
-                    <FiMapPin size={24} color="#4661C2"/>
+                    <FiMapPin size={24} />
                     Fazenda Mucugê
                 </Info>
             </SearchResponseUnit>
@@ -35,15 +35,55 @@ const Dashboard:React.FC = () => {
                 <Info>Seguindo seus passos</Info>
 
                 <Info>
-                    <FiCalendar size={24} color="#4661C2"/>
+                    <FiCalendar size={24} />
                     24/12/2020 a 27/12/2020
                 </Info>
                 
                 <Info>
-                    <FiMapPin size={24} color="#4661C2"/>
+                    <FiMapPin size={24} />
                     Fazenda Mucugê
                 </Info>
             </SearchResponseUnit>
+            <SearchResponseUnit to="/eventuse">
+                <Info>Seguindo seus passos</Info>
+
+                <Info>
+                    <FiCalendar size={24} />
+                    24/12/2020 a 27/12/2020
+                </Info>
+                
+                <Info>
+                    <FiMapPin size={24} />
+                    Fazenda Mucugê
+                </Info>
+            </SearchResponseUnit>
+            <SearchResponseUnit to="/eventuse">
+                <Info>Seguindo seus passos</Info>
+
+                <Info>
+                    <FiCalendar size={24} />
+                    24/12/2020 a 27/12/2020
+                </Info>
+                
+                <Info>
+                    <FiMapPin size={24} />
+                    Fazenda Mucugê
+                </Info>
+            </SearchResponseUnit>
+            <SearchResponseUnit to="/eventuse">
+                <Info>Seguindo seus passos</Info>
+
+                <Info>
+                    <FiCalendar size={24} />
+                    24/12/2020 a 27/12/2020
+                </Info>
+                
+                <Info>
+                    <FiMapPin size={24} />
+                    Fazenda Mucugê
+                </Info>
+            </SearchResponseUnit>
+          
         </SearchResponseBox>
     </Container>
     );

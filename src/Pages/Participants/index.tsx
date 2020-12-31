@@ -2,9 +2,11 @@ import {
     Container,
     EventDiv,
     EventDescription,
-    EventInfo,
     EventDescriptionAlignment,
-    EventTitle
+    EventTitle,
+    ParticipantsDiv,
+    ParticipantInfo,
+    ParticipantsListDiv
 } from './styles';
 
 import Header from '../../Components/Header';
@@ -21,14 +23,22 @@ const Participants: React.FC = () => {
                         </EventTitle>
                     </EventDescriptionAlignment>
                 </EventDescription>
+            </EventDiv>
+            <ParticipantsDiv>
+                <ParticipantInfo>
+                    <h1>Participantes</h1>
+                    <p>
+                        Total de vagas: 100<br/>
+                        Total de participantes: 10<br/>
+                        Vagas remanescentes: 90<br/>
+                    </p>
+                </ParticipantInfo>
+                <ParticipantsListDiv>
 
-                <EventInfo>
-                
+                </ParticipantsListDiv>
 
                    
-                </EventInfo>  
-                
-            </EventDiv>
+            </ParticipantsDiv>  
         </Container>
     );
 }
