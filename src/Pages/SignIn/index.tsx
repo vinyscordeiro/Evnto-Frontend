@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 
+import {useHistory} from 'react-router-dom';
+
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import Header from '../../Components/Header'; 
@@ -18,7 +20,10 @@ import {
 import {FiLogIn} from 'react-icons/fi';
 
 const SignIn:React.FC = () => {
-    const navigateToDashboard = useCallback(() => {},[]);
+    const history = useHistory();
+    const navigateToDashboard = useCallback(() => {
+        history.push('/dashboard');
+    },[history]);
 
     return (
     <Container>
@@ -32,7 +37,7 @@ const SignIn:React.FC = () => {
                     <Input name="mail" placeholder="Email" type="text"/>
                     <Input name="password" placeholder="Senha" type="password" />
                     <ForgotPassword to="/ForgotPassword">Esqueceu sua senha ?</ForgotPassword>
-                    <Button type="submit"> Entrar</Button>
+                    <Button type="submit" onSubmit={navigateToDashboard}> Entrar</Button>
                 </SignInBoxForm>
             </SignInBox>
 

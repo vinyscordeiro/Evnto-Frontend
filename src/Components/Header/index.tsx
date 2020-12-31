@@ -1,6 +1,9 @@
-import {Container, Logo} from './styles';
+import {Container, Logo, User} from './styles';
 
-const Header: React.FC = ({children}) => {
+import profile from '../../assets/profile.jpeg';
+
+
+const Header: React.FC = ({ children}) => {
     return(
         <Container>
             <Logo href="/">EVNTO</Logo>

@@ -1,4 +1,5 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
+
 import background from '../../assets/background2.jpg';
 
 
@@ -38,3 +39,12 @@ export const EventTitle = styled.div`
     font-size: 72px;
     color: #fff;
 `;
+
+export const ParticipantsDiv = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const ParticipantInfo = styled.div``;
+
+export const ParticipantsListDiv = styled.div``;
