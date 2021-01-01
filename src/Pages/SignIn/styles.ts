@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import background1 from '../../assets/background1.jpg';
 import {Link} from 'react-router-dom';
-import {shade} from 'polished';
 
 export const Container = styled.div`
     display: flex;
