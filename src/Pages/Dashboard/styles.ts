@@ -5,8 +5,8 @@ import background1 from '../../assets/background1.jpg';
 
 export const Container = styled.div`
     width: 100vw;
-    height: 100vh;
-    background: #253A44 url(${background1}) no-repeat;
+    height: 100%;
+    background: #fff url(${background1}) no-repeat;
     background-attachment: fixed;
     background-size: cover;
     display: flex;
@@ -33,7 +33,7 @@ export const appearFromBottom = keyframes`
 
 export const SearchResponseBox = styled.div`
     width: 704px; 
-    margin-top: 48px;
+    margin: 48px 0;
     border-radius: 2px;
     animation: ${appearFromBottom} 0.7s;
 `;
@@ -45,11 +45,11 @@ export const SearchResponseUnit = styled(Link)`
     justify-content: space-around;
     color: #000;
     text-decoration: none;
-    background-color: #E9E9E9;
-    opacity: 0.9;
+    background-color: #fff;
     height: 48px;
     border-radius: 2px;
     margin-top: 8px;
+    box-shadow: 2px black;
 
     &:hover {
         opacity: 1;
