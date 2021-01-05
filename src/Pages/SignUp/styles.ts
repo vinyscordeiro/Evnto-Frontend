@@ -1,9 +1,13 @@
 import {Link} from 'react-router-dom';
 
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import Button from '../../Components/Button/index';
 import background4 from '../../assets/background4.jpg';
+
+interface ViewProps{
+    isSelected: Boolean;
+}
 
 export const Container = styled.div`
     width: 100vw;
@@ -21,10 +25,18 @@ export const ChangeView = styled.div`
     justify-content: space-between;
 `;
 
-export const View = styled.div`
+export const View = styled.div<ViewProps>`
+    cursor: pointer;
     width: 152px;
     height: 3px;
-    background-color: #4F7EF4;
+    background-color: #C4C4C4;
+
+    ${ props => props.isSelected && css`
+        background-color: #4F7EF4;
+    `};
+`;
+
+export const InputsDiv = styled.div`
 `;
 
 export const SignUpDiv = styled.div`
@@ -47,7 +59,7 @@ export const Title = styled.h2`
 `;
 
 export const ButtonAdapted = styled(Button)`
-    margin: 35px 0;
+    margin: 35px 5px;
 `;
 
 export const SignInDiv = styled.div`
@@ -62,6 +74,6 @@ export const SignInDiv = styled.div`
 
 export const SignInLink = styled(Link)`
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.125em;
     color: #000;
 `;

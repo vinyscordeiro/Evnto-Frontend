@@ -31,7 +31,7 @@ import Julia from '../../assets/julia.jpg';
 import Header from '../../Components/Header';
 import TextField from '../../Components/TextField';
 
-import { FiCalendar, FiClipboard, FiEdit, FiMap, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
+import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
 
 const EventEditting: React.FC = () => {
     return(
@@ -64,7 +64,7 @@ const EventEditting: React.FC = () => {
                    <EventBar>
 
                         <EventAlterButton>
-                            <FiSave size={24} color="#fff" />
+                            <FiSave />
                             Salvar alterações 
                         </EventAlterButton>
 

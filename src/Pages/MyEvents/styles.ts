@@ -1,5 +1,6 @@
+import styled, {css, keyframes} from 'styled-components';
+
 import { Link } from 'react-router-dom';
-import styled, {css} from 'styled-components';
 import background from '../../assets/background5.jpg';
 
 interface SubtitleProps{
@@ -28,7 +29,7 @@ export const Title = styled.h1`
 `;
 
 export const EventsDiv = styled.div`
-   width: 960px;
+   min-width: 60em;
    margin-top: 48px;
 `;
 
@@ -42,7 +43,7 @@ export const EventSelection = styled.div`
 export const Subtitle = styled.div<SubtitleProps>`
     cursor: pointer;
     color: #FFF;
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-right: 32px;
     border-bottom: 2px solid transparent;
 
@@ -59,6 +60,15 @@ export const Subtitle = styled.div<SubtitleProps>`
     }
 `;
 
+export const appearFromBottom = keyframes`
+    from{
+        transform: translateY(30px);
+    }
+    to{
+        transform: translateY(0);
+    }
+`;
+
 export const Event = styled(Link)`
     cursor: pointer;
     height: 46px;
@@ -72,6 +82,7 @@ export const Event = styled(Link)`
     opacity: 0.9;
     text-decoration: none;
     color: #000;
+    animation: ${appearFromBottom} 0.8s;
 
     &:hover {
         border: 2px solid #4661C2;

@@ -6,8 +6,8 @@ export default createGlobalStyle`
         padding: 0;
     }
     body {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         margin: 0;
         padding: 0;
         font-family: 'Reem Kufi', sans-serif;

@@ -17,7 +17,7 @@ import {
     SignUpDiv
 } from './styles';
 
-import {FiLogIn} from 'react-icons/fi';
+import {FiLock, FiLogIn, FiMail} from 'react-icons/fi';
 
 const SignIn:React.FC = () => {
     const history = useHistory();
@@ -34,10 +34,10 @@ const SignIn:React.FC = () => {
             <SignInBox>
                 <SignInBoxForm onSubmit={navigateToDashboard}>
                     <Title>Faça seu Login </Title>
-                    <Input name="mail" placeholder="Email" type="text"/>
-                    <Input name="password" placeholder="Senha" type="password" />
+                    <Input name="mail" placeholder="Email" type="text" icon={FiMail} />
+                    <Input name="password" placeholder="Senha" type="password" icon={FiLock} />
                     <ForgotPassword to="/ForgotPassword">Esqueceu sua senha ?</ForgotPassword>
-                    <Button type="submit" onSubmit={navigateToDashboard}> Entrar</Button>
+                    <Button type="submit" onSubmit={navigateToDashboard}>Entrar</Button>
                 </SignInBoxForm>
             </SignInBox>
 

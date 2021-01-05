@@ -24,6 +24,7 @@ export const SearchBoxInput = styled.input`
     outline: none;
     padding: 0 10px;
     border-radius: 0;
+    font-family: 'Reem Kufi' 16px;
 
 `;
 

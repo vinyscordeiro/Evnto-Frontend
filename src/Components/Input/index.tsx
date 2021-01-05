@@ -1,18 +1,18 @@
 import {InputHTMLAttributes} from 'react';
 import {Container, BlueDiv, InputElement} from './styles';
 
-import {FiMail} from 'react-icons/fi';
+import {IconBaseProps} from 'react-icons';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     name: string;
-    icon?: string;
+    icon ?: React.ComponentType<IconBaseProps>;
 }
 
-const Input: React.FC<InputProps> = ({name,icon,...rest}) => {
+const Input: React.FC<InputProps> = ({name,icon: Icon,...rest}) => {
     return(
         <Container>
             <BlueDiv>
-                <FiMail size={24} color="#fff"/>
+                {Icon && <Icon /> }
             </BlueDiv>
             <InputElement {...rest}/>
         </Container>
