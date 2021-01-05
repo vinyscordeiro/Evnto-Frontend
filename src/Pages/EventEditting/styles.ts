@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components';
 import background from '../../assets/background2.jpg';
 import {Link} from 'react-router-dom';
+import { shade } from 'polished';
 
 interface DefinitionButtonProps{
     isRed ?: Boolean;
@@ -83,7 +84,6 @@ export const EventAlterButton = styled.div`
     cursor: pointer;
     background-color: #4E7EF4;
     height: 88px;
-    border: 4px solid #4E7EF4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,6 +94,14 @@ export const EventAlterButton = styled.div`
         margin-right: 16px;
     }
 
+        &:hover{
+            background-color: ${shade(0.2,"#4E7EF4")};
+        }
+
+        &:active{
+            font-size: 22px;
+            transition: font-size 0.1s;
+        }
 `;
 
 // Date

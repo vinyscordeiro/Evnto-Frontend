@@ -32,7 +32,8 @@ export const SidebarContainer = styled.div`
     right: 0;
     top: 0;
     z-index: 1;
-    animation: ${appearFromRight} 0.5s`;
+    animation: ${appearFromRight} 0.5s;
+`;
 
 export const CloseSiderbarIcon = styled(FiX)`
     cursor: pointer;
@@ -117,14 +118,12 @@ export const MadeInDiv = styled.div`
 
 
 export const ProfileContainer = styled.div`
-    position: absolute;
-    top: 20px;
-    right: 64px;
+    margin-right: 4em;
     cursor: pointer;
 `;
 
 export const ProfileOptions = styled.img`
-    width: 52px;
-    height: 52px;
+    width: 3.5em;
+    height: 3.5em;
     border-radius: 50%;
 `;

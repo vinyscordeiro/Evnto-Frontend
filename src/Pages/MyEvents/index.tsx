@@ -152,7 +152,6 @@ const MyEvents:React.FC = () => {
                }
                
             </EventsDiv>          
-
         </Container>
     );
 }
