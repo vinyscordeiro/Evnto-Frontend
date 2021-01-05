@@ -16,12 +16,3 @@ export const Logo = styled.a`
     text-decoration: none;
     margin-left: 72px;
 `;
-
-export const User = styled.img`
-    cursor: pointer;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    margin-left: auto;
-    margin: 0 88px;
-`;

@@ -1,13 +1,14 @@
-import {Container, Logo, User} from './styles';
+import {Container, Logo} from './styles';
 
-import profile from '../../assets/profile.jpeg';
+import Sidebar from '../Sidebar';
 
+const Header: React.FC = () => {
 
-const Header: React.FC = ({ children}) => {
     return(
         <Container>
             <Logo href="/">EVNTO</Logo>
-            {children}
+            <Sidebar />
+               
         </Container>)
 };
 

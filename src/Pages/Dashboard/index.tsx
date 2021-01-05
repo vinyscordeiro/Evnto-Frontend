@@ -10,14 +10,14 @@ import {
 } from './styles';
 
 import {FiCalendar, FiMapPin} from 'react-icons/fi';
-import Sidebar from '../../Components/Sidebar';
 
 const Dashboard:React.FC = () => {
+
     return (
     <Container >
         <Header />
         <Logo>EVNTO</Logo>
-        <Sidebar />
+        
         <SearchBox placeholder="Digite o nome do evento que deseja participar"/>
         <SearchResponseBox>
             <SearchResponseUnit to="/eventuse">
