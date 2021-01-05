@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import background1 from '../../assets/background1.jpg';
 
 export const Container = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100%;
     background: #fff url(${background1}) no-repeat;
     background-attachment: fixed;

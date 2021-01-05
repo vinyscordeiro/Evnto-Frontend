@@ -1,13 +1,27 @@
-import { shade } from 'polished';
 import { Link } from 'react-router-dom';
 
-import styled, {css} from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
+import {shade} from 'polished';
+
+import {FiX} from 'react-icons/fi';
 
 interface SidebarLinkUnitProps{
     isSelected: Boolean;
 }
 
 export const Container = styled.div`
+`;
+
+export const appearFromRight = keyframes`
+    from{
+        transform: translateX(344px);
+    }
+    to{
+        transform: translateX(0);
+    }
+`;
+
+export const SidebarContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -16,6 +30,20 @@ export const Container = styled.div`
     position: fixed;
     background-color: #1C1717;
     right: 0;
+    top: 0;
+    z-index: 1;
+    animation: ${appearFromRight} 0.5s`;
+
+export const CloseSiderbarIcon = styled(FiX)`
+    cursor: pointer;
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    color: #fff;
+
+    &:hover{
+        color: ${shade(0.5, "#fff")};
+    }
 `;
 
 export const ProfileImg = styled.img`
@@ -85,4 +113,18 @@ export const MadeInDiv = styled.div`
     border-top: 2px solid #fff;
     padding: 8px 0 16px 0;;
     margin-top: auto;
+`;
+
+
+export const ProfileContainer = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 64px;
+    cursor: pointer;
+`;
+
+export const ProfileOptions = styled.img`
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
 `;
