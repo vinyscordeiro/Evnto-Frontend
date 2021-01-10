@@ -1,5 +1,8 @@
 import { FiCalendar, FiMap } from 'react-icons/fi';
 
+import Header from '../../Components/Header';
+import BarComponent from '../../Components/BarComponent';
+
 import {
     Container,
     EventDiv,
@@ -18,17 +21,13 @@ import {
     EventRegistrationTitle,
     EventRegistrationDate,
     EventRegistrationText,
-    EventBarInfo,
-    EventBarTitle,
-    EventBarSubtitle,
+    BCSubtitle,
     HostPhoto,
-    EventBarSubtitleTextDiv,
-    EventBarTextBig,
+    BCInfoDiv,
+    BCTextBig,
     EventBarTextNormal,
     EventBarTextSmall,
 } from './styles';
-
-import Header from '../../Components/Header';
 
 import Julia from '../../assets/julia.jpg';
 
@@ -64,7 +63,6 @@ const EventUse: React.FC = () => {
                    </EventInfoDiv>
 
                    <EventBar>
-
                        <EventRegistration>
                            <EventRegistrationTitle>Inscrições até</EventRegistrationTitle>
                            <EventRegistrationText>
@@ -73,40 +71,38 @@ const EventUse: React.FC = () => {
                            </EventRegistrationText>
                        </EventRegistration>
 
-                       <EventBarInfo>
-                           <EventBarTitle>Data</EventBarTitle>
-                           <EventBarSubtitle>
-                               <FiCalendar size={24} color="#000" />
-                               <EventBarTextBig>24/12/2020</EventBarTextBig>
-                           </EventBarSubtitle>
-                       </EventBarInfo>
+                        <BarComponent title="Data" >
+                            <BCSubtitle>
+                                <FiCalendar size={24} color="#000" />
+                                <BCTextBig>24/12/2020</BCTextBig>
+                           </BCSubtitle>
+                        </BarComponent>
+        
 
-                       <EventBarInfo>
-                           <EventBarTitle>Local</EventBarTitle>
-                           <EventBarSubtitle>
+                       <BarComponent title="Data">
+                           <BCSubtitle>
                                <FiMap size={24} color="#000" />
-                                <EventBarSubtitleTextDiv>
-                                    <EventBarTextBig>Fazenda Mucugê</EventBarTextBig>
+                                <BCInfoDiv>
+                                    <BCTextBig>Fazenda Mucugê</BCTextBig>
                                     <EventBarTextSmall>Rua de santa apolonia 9D Lisboa</EventBarTextSmall>
-                                </EventBarSubtitleTextDiv>
-                           </EventBarSubtitle>
-                       </EventBarInfo>
+                                </BCInfoDiv>
+                           </BCSubtitle>
+                       </BarComponent>
 
-                       <EventBarInfo>
-                           <EventBarTitle>Organizador</EventBarTitle>
-                           <EventBarSubtitle>
+                       <BarComponent title="Organizador">
+                           <BCSubtitle>
                                 <HostPhoto
                                     src={Julia}
                                     alt="Julia"
                                     width={40}
                                     height={40}>
                                 </HostPhoto>
-                               <EventBarSubtitleTextDiv>
+                               <BCInfoDiv>
                                     <EventBarTextNormal>@juliasilva</EventBarTextNormal>
                                     <EventBarTextNormal>Julia Silva Montano</EventBarTextNormal>
-                               </EventBarSubtitleTextDiv>
-                           </EventBarSubtitle>
-                       </EventBarInfo>
+                               </BCInfoDiv>
+                           </BCSubtitle>
+                       </BarComponent>
                    </EventBar>
                 </EventInfo>  
                 

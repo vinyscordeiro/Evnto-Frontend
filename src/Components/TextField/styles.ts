@@ -32,5 +32,4 @@ export const InputElement = styled.input`
     outline: 0;
     border: 0;
     color: #635A5A;
-
 `;

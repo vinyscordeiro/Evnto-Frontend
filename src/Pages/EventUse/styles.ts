@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import background from '../../assets/background2.jpg';
 
 export const Container = styled.div`
@@ -9,6 +10,8 @@ export const Container = styled.div`
 export const EventDiv = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 `;
 
 export const EventDescription = styled.div`
@@ -17,29 +20,31 @@ export const EventDescription = styled.div`
 `;
 
 export const EventInfo = styled.div`
-    width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding: 56px 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 56px 8%;
 `;
 
 export const EventDescriptionAlignment = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 232px;
     background: #253A44 url(${background}) no-repeat fixed;
+    padding: 0 8%;
 `;
 
 export const EventTitle = styled.div`
     font-size: 72px;
     color: #fff;
+    max-height: 100%;
 `;
 
 export const EventButton = styled.button`
-    background: #43A018;
     cursor: pointer;
+    background: #43A018;
     width: 339px;
     height: 64px;
     border-radius: 0;
@@ -60,7 +65,12 @@ export const EventButton = styled.button`
     &:hover {
         box-shadow: inset 0 0 20px rgba(67, 160, 24, .5), 0 0 20px rgba(67, 160, 24, .2);
         outline-color: rgba(67, 160, 24, 0);
-        outline-offset: 15px;
+        outline-offset: 15px;;
+    }
+
+    &:active{
+        font-size: 22px;
+        transition: font-size 0.1s;
     }
     
 `;
@@ -78,6 +88,7 @@ export const EventDays = styled.div`
 `;
 
 export const EventInfoDiv = styled.div`
+    width: 55%;
     max-width: 776px;
 `;
 
@@ -100,8 +111,9 @@ export const EventBar = styled.div`
 `;
 
 export const EventRegistration = styled.div`
-    background-color: #4E7EF4;
+    width: 100%;
     height: 88px;
+    background-color: #4E7EF4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,7 +143,6 @@ export const EventRegistrationDate = styled.div`
 `;
 
 export const EventBarInfo = styled.div`
-    width: 100%;
     height: 112px;
     border-left: 4px solid #4F7EF4;
     margin-top: 25px;
@@ -142,14 +153,15 @@ export const EventBarTitle = styled.div`
     font-size: 36px;
 `;
 
-export const EventBarSubtitle = styled.div`
+export const BCSubtitle = styled.div`
     margin-top: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 16px 0 24px;
 
     > svg {
-        margin-right: 16px;
+        margin-right: 8px;
     }
 `;
 
@@ -158,13 +170,13 @@ export const HostPhoto = styled.img`
 `;
 
 
-export const EventBarSubtitleTextDiv = styled.div`
+export const BCInfoDiv = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 4px;
 `;
 
-export const EventBarTextBig = styled.div`
+export const BCTextBig = styled.div`
     font-size: 24px;
 `;
 
