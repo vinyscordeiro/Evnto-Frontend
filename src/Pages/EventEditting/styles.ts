@@ -1,7 +1,10 @@
 import styled, {css} from 'styled-components';
-import background from '../../assets/background2.jpg';
+
 import {Link} from 'react-router-dom';
 import { shade } from 'polished';
+
+import background from '../../assets/background2.jpg';
+
 
 interface DefinitionButtonProps{
     isRed ?: Boolean;
@@ -23,11 +26,9 @@ export const EventDescription = styled.div`
 `;
 
 export const EventInfo = styled.div`
-    width: 1360px;
     display: flex;
-    padding: 56px 0;
-    margin: auto;
-    justify-content: space-between;    
+    justify-content: space-between;   
+    margin: 56px 8%; 
 `;
 
 export const EventDescriptionAlignment = styled.div`
@@ -199,11 +200,12 @@ export const DefinitionTitle = styled.div`
 `;
 
 export const DefinitionButton = styled.button<DefinitionButtonProps>`
+    height: 36px;
+    width: 150px;
     display: flex;
     background-color: #FFF;
     flex-direction: row;
     align-items: center;
-    height: 36px;
     border: 0;
     outline: none;
     cursor: pointer;

@@ -5,11 +5,16 @@ import {
     EventDescriptionAlignment,
     EventTitle,
     ParticipantsDiv,
+    ParticipantsTitle,
     ParticipantInfo,
-    ParticipantsListDiv
+    ParticipantInfoText,
+    ParticipantsListDiv,
+    Participant,
+    ParticipantText
 } from './styles';
 
 import Header from '../../Components/Header';
+import Profile from '../../assets/julia.jpg';
 
 const Participants: React.FC = () => {
     return(
@@ -23,18 +28,33 @@ const Participants: React.FC = () => {
                         </EventTitle>
                     </EventDescriptionAlignment>
                 </EventDescription>
+                <ParticipantInfo>
+                        <ParticipantInfoText>Total de vagas: 100 </ParticipantInfoText>
+                        <ParticipantInfoText>Total de participantes: 10</ParticipantInfoText>
+                        <ParticipantInfoText>Vagas remanescentes: 90</ParticipantInfoText>
+                </ParticipantInfo>
             </EventDiv>
             <ParticipantsDiv>
-                <ParticipantInfo>
-                    <h1>Participantes</h1>
-                    <p>
-                        Total de vagas: 100<br/>
-                        Total de participantes: 10<br/>
-                        Vagas remanescentes: 90<br/>
-                    </p>
-                </ParticipantInfo>
+            <ParticipantsTitle>Participantes</ParticipantsTitle>
                 <ParticipantsListDiv>
-
+                    <Participant>
+                        <img src={Profile} alt="Nome"/>
+                        <ParticipantText>Nome: Vinicius Silva Cordeiro</ParticipantText>
+                        <ParticipantText>Sexo: Feminino</ParticipantText>
+                        <ParticipantText>Idade: 22</ParticipantText>
+                    </Participant>     
+                    <Participant>
+                        <img src={Profile} alt="Nome"/>
+                        <ParticipantText>Nome: Vinicius Silva Cordeiro</ParticipantText>
+                        <ParticipantText>Sexo: Feminino</ParticipantText>
+                        <ParticipantText>Idade: 22</ParticipantText>
+                    </Participant> 
+                    <Participant>
+                        <img src={Profile} alt="Nome"/>
+                        <ParticipantText>Nome: Vinicius Silva Cordeiro</ParticipantText>
+                        <ParticipantText>Sexo: Feminino</ParticipantText>
+                        <ParticipantText>Idade: 22</ParticipantText>
+                    </Participant> 
                 </ParticipantsListDiv>
 
                    
