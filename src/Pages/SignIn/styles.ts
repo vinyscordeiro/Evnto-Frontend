@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import background1 from '../../assets/background1.jpg';
 import {Link} from 'react-router-dom';
+import {Form} from '@unform/web';
+
+import background1 from '../../assets/background1.jpg';
 
 export const Container = styled.div`
     display: flex;
@@ -36,13 +38,13 @@ export const SignInBox = styled.div`
 
 `;
 
-export const SignInBoxForm = styled.form`
+export const SignInBoxForm = styled(Form)`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     box-shadow: 0 0 0.3em black;
-    background-color: #E9E9E9;
+    background-color: #FFF;
     height: 100%;
 `;
 

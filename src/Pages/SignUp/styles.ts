@@ -1,12 +1,17 @@
-import {Link} from 'react-router-dom';
-
 import styled, {css} from 'styled-components';
+
+import {Link} from 'react-router-dom';
+import {Form} from '@unform/web';
 
 import Button from '../../Components/Button/index';
 import background4 from '../../assets/background4.jpg';
 
 interface ViewProps{
     isSelected: Boolean;
+}
+
+interface InputsDivProps{
+    available: Boolean;
 }
 
 export const Container = styled.div`
@@ -36,7 +41,11 @@ export const View = styled.div<ViewProps>`
     `};
 `;
 
-export const InputsDiv = styled.div`
+export const InputsDiv = styled.div<InputsDivProps>`
+    
+    ${ props => !props.available && css`
+        display: none;
+    `};
 `;
 
 export const SignUpDiv = styled.div`
@@ -51,7 +60,7 @@ export const SignUpDiv = styled.div`
 
 export const SignUpCenteredDiv = styled.div``;
 
-export const SignUpForm = styled.form``;
+export const SignUpForm = styled(Form)``;
 
 export const Title = styled.h2`
     font-size: 48px;

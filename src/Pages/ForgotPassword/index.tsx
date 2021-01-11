@@ -1,3 +1,5 @@
+import {useCallback} from 'react';
+
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
 
@@ -15,11 +17,15 @@ import {
 import {FiLogIn} from 'react-icons/fi';
 
 const ForgotPassword:React.FC = () => {
+    const handleSubmit = useCallback((data) => {
+        console.log(data);
+    }, []);
+
     return (
     <Container>
         <Header/>
         <ForgotPasswordDiv>
-            <ForgotPasswordForm>
+            <ForgotPasswordForm onSubmit={handleSubmit}>
                 <Title>Esqueceu sua senha ?</Title>
                 <Subtitle>Não é problema, podemos recuperar com seu email</Subtitle>
 

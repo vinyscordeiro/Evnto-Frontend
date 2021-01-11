@@ -39,45 +39,42 @@ const SignUp:React.FC = () => {
         setView2(!view2);
     }, [view1, view2]);
 
+    const handleSubmit = useCallback((data) => {
+        console.log(data);
+    }, []);
+
     return (
     <Container>
         <Header />
             <SignUpDiv>
                 <SignUpCenteredDiv>
-                    <SignUpForm>
+                    <SignUpForm onSubmit={handleSubmit}>
                         <Title>Cadastro</Title>
 
                         <ChangeView>
                             <View isSelected={view1} onClick={handleView} />
                             <View isSelected={view2} onClick={handleView} />
                         </ChangeView>
-                        { view1 && 
-                        <InputsDiv>
-                            <Input name="name" placeholder="Nome" icon={FiUser} />
-                            <Input name="user" placeholder="Usuário" icon={FiAtSign} />
-                            <Input name="mail" placeholder="Email" icon={FiMail} />
-                            <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
-                            <Input name="sex" placeholder="Sexo" icon={FiUsers} />
-                            
-    
-                            <ButtonAdapted onClick={handleView} >Seguinte</ButtonAdapted>
-                        </InputsDiv>
-                        }
+                            <InputsDiv available={view1}>
+                                <Input name="name" placeholder="Nome" icon={FiUser} />
+                                <Input name="user" placeholder="Usuário" icon={FiAtSign} />
+                                <Input name="mail" placeholder="Email" icon={FiMail} />
+                                <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
+                                <Input name="sex" placeholder="Sexo" icon={FiUsers} />
+                                
+                                <ButtonAdapted onClick={handleView} >Seguinte</ButtonAdapted>
+                            </InputsDiv>
 
-                        { view2 && 
-                        <InputsDiv>
-                            <Input name="adress" placeholder="Endereço" icon={FiMap} />
-                            <Input name="city" placeholder="Cidade" icon={FiMapPin} />
-                            <Input name="country" placeholder="País" icon={FiMapPin} />
-                            <Input name="password" placeholder="Senha" icon={FiLock}/>
-                            <Input name="password_confirmation" placeholder="Confirmar senha" icon={FiLock} />
-    
-                            <ButtonAdapted onClick={handleView} >Anterior</ButtonAdapted>
-                            <ButtonAdapted onClick={handleView} >Finalizar</ButtonAdapted>
-                        </InputsDiv>
-                        }
-                       
-
+                            <InputsDiv available={view2}>
+                                <Input name="adress" placeholder="Endereço" icon={FiMap} />
+                                <Input name="city" placeholder="Cidade" icon={FiMapPin} />
+                                <Input name="country" placeholder="País" icon={FiMapPin} />
+                                <Input name="password" placeholder="Senha" icon={FiLock}/>
+                                <Input name="password_confirmation" placeholder="Confirmar senha" icon={FiLock} />
+        
+                                <ButtonAdapted onClick={handleView} >Anterior</ButtonAdapted>
+                                <ButtonAdapted type="submit" onClick={handleSubmit} >Finalizar</ButtonAdapted>
+                            </InputsDiv>
                     </SignUpForm>
 
                     <SignInLink to="/">
