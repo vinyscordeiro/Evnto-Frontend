@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import {Form} from '@unform/web';
+
 import Button from '../../Components/Button/index';
 
 import background3 from '../../assets/background3.jpg';
@@ -21,7 +23,7 @@ export const ForgotPasswordDiv = styled.div`
     flex-direction: column;
 
 `;
-export const ForgotPasswordForm = styled.form`
+export const ForgotPasswordForm = styled(Form)`
     margin: auto;
 `;
 

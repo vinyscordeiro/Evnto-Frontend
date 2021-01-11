@@ -1,10 +1,15 @@
 import styled, {css} from 'styled-components';
+import {Form} from '@unform/web';
 import {shade} from 'polished';
 
 import background from '../../assets/background3.jpg';
 
 interface ViewProps{
     isSelected: Boolean;
+}
+
+interface InputsDivProps{
+    available: Boolean;
 }
 
 export const Container = styled.div`
@@ -36,7 +41,7 @@ export const ProfileBox = styled.div`
     margin: 24px;
 `;
 
-export const  AccountForm= styled.form`
+export const  AccountForm= styled(Form)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,12 +67,19 @@ export const Photo = styled.img`
     border-radius: 50%;
 `;
 
-export const ProfileForm = styled.form`
+export const ProfileForm = styled(Form)`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: -4em;
+`;
+
+export const InputsDiv = styled.div<InputsDivProps>`
+    
+    ${ props => !props.available && css`
+        display: none;
+    `};
 `;
 
 export const Title = styled.h2`

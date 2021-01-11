@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {Form} from '@unform/web';
+
 import background from '../../assets/background4.jpg';
 
 import Button from '../../Components/Button/index';
@@ -21,7 +23,7 @@ export const RecoverPasswordDiv = styled.div`
     flex-direction: column;
 
 `;
-export const RecoverPasswordForm = styled.form`
+export const RecoverPasswordForm = styled(Form)`
     margin: auto;
 `;
 

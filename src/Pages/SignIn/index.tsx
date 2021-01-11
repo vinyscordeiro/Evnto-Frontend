@@ -21,6 +21,11 @@ import {FiLock, FiLogIn, FiMail} from 'react-icons/fi';
 
 const SignIn:React.FC = () => {
     const history = useHistory();
+
+    const handleSubmit = useCallback((data) => {
+        console.log(data);
+    },[]);
+
     const navigateToDashboard = useCallback(() => {
         history.push('/dashboard');
     },[history]);
@@ -32,12 +37,12 @@ const SignIn:React.FC = () => {
         </HeaderContainer>
         <SignInContainer>
             <SignInBox>
-                <SignInBoxForm onSubmit={navigateToDashboard}>
+                <SignInBoxForm onSubmit={handleSubmit}>
                     <Title>Faça seu Login </Title>
                     <Input name="mail" placeholder="Email" type="text" icon={FiMail} />
                     <Input name="password" placeholder="Senha" type="password" icon={FiLock} />
                     <ForgotPassword to="/ForgotPassword">Esqueceu sua senha ?</ForgotPassword>
-                    <Button type="submit" onSubmit={navigateToDashboard}>Entrar</Button>
+                    <Button type="submit">Entrar</Button>
                 </SignInBoxForm>
             </SignInBox>
 

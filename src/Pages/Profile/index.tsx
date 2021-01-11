@@ -11,6 +11,7 @@ import {
     AccountTitle,
     AccountSubtitle,
     ProfileForm,
+    InputsDiv,
     Photo,
     Title,
     ChangeView,
@@ -38,6 +39,14 @@ const Profile:React.FC = () => {
         setAccountView(!accountView);
     }, [accountView]);
 
+    const handlePasswordChangeSubmit = useCallback((data) => {
+        console.log(data);
+    }, []);
+
+    const handleProfileChangeSubmit = useCallback((data) => {
+        console.log(data);
+    }, []);
+
     return (
     <Container>
         <Header />
@@ -45,13 +54,13 @@ const Profile:React.FC = () => {
                 <ProfileBox>
                     {accountView ? 
                         <>
-                            <AccountForm>
+                            <AccountForm onSubmit={handlePasswordChangeSubmit} >
                                 <AccountTitle>Configurações de conta</AccountTitle>
                                 <AccountSubtitle>Configurações de conta</AccountSubtitle>
                                 <Input name="old_password" placeholder="Senha antiga" icon={FiLock} />
                                 <Input name="new_password" placeholder="Nova Senha" icon={FiLock} />
                                 <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} />
-                                <Button>Alterar senha</Button>
+                                <Button type="submit">Alterar senha</Button>
                             </AccountForm>
                             <ButtonDiv>
                                 <ButtonView type="button" onClick={handleAccountView}>
@@ -66,7 +75,7 @@ const Profile:React.FC = () => {
                         </>
                         :
                         <>
-                            <ProfileForm>
+                            <ProfileForm onSubmit={handleProfileChangeSubmit}>
                                 <Photo src={profile} width="184px" height="184px"/>
                                 <Title>Perfil</Title>
                                     <ChangeView>
@@ -74,21 +83,19 @@ const Profile:React.FC = () => {
                                         <View isSelected={profileView2} onClick={handleProfileView} />
                                     </ChangeView>
                                 
-                                    { profileView1 && 
-                                    <>
+                                    <InputsDiv available={profileView1}>
                                         <Input name="name" placeholder="Nome" icon={FiUser} />
                                         <Input name="user" placeholder="Usuário" icon={FiAtSign}/>
                                         <Input name="mail" placeholder="Email" icon={FiMail}/>
                                         <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
-                                    </>}
+                                    </InputsDiv>
 
-                                    { profileView2 && 
-                                    <>
+                                    <InputsDiv available={profileView2}>
                                         <Input name="sex" placeholder="Sexo" icon={FiUsers} />
                                         <Input name="adress" placeholder="Endereço" icon={FiMapPin} />
                                         <Input name="city" placeholder="Cidade" icon={FiMap}/>
                                         <Input name="country" placeholder="Paìs" icon={FiMap}/>
-                                    </>}
+                                    </InputsDiv>
                         
                             </ProfileForm>
 
