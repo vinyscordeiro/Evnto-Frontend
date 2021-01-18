@@ -5,13 +5,14 @@ export const Container = styled.div`
     height: 3em;
     width: 19.75em;
     margin-top: 16px;
+    color: #000;
 `;
 
 export const BlueDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #4661C2;
+    background: linear-gradient(270deg, #4661C2 15%, rgba(101, 119, 183, 0) 91.67%), #4F7EF4;
     width: 60px;
     height: 100%;
 
@@ -28,7 +29,7 @@ export const InputElement = styled.input`
     height: 100%;
     border: 0;
     outline: 0;
-    background-color: #EDEFF7;
+    background-color: #D4DFF9;
 
     &::placeholder{
         color: #635A5A;

@@ -13,7 +13,7 @@ import {
     SignInDiv
 } from './styles';
 
-import {FiLogIn} from 'react-icons/fi';
+import {FiLock, FiLogIn} from 'react-icons/fi';
 
 const RecoverPassword:React.FC = () => {
 
@@ -29,8 +29,8 @@ const RecoverPassword:React.FC = () => {
                 <Title>Recuperar sua senha ?</Title>
                 <Subtitle>Podes agora colocar sua nova senha!</Subtitle>
 
-                <Input name="password" placeholder="Nova senha"/>
-                <Input name="password_confirmation" placeholder="Confirmar nova senha senha"/>
+                <Input name="password" icon={FiLock} placeholder="Nova senha" type="password" />
+                <Input name="password_confirmation" icon={FiLock} placeholder="Confirmar nova senha senha" type="password"/>
 
                 <ButtonAdapted type="submit">Alterar Senha</ButtonAdapted>
 

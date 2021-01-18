@@ -1,3 +1,13 @@
+import { useCallback, useRef } from 'react';
+
+import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
+
+import BarComponent from '../../Components/BarComponent';
+import Header from '../../Components/Header';
+import TextField from '../../Components/TextField';
+
+import Julia from '../../assets/julia.jpg';
+
 import {
     Container,
     EventDiv,
@@ -6,7 +16,7 @@ import {
     EventDescriptionAlignment,
     EventTitle,
     EventDays,
-    EventInfoDiv,
+    EventInfoForm,
     EventBar,
     EventAlterButton,
     EventDateEditDiv,
@@ -23,17 +33,19 @@ import {
     DefinitionButton,
     DefinitionText,
 } from './styles';
-
-import BarComponent from '../../Components/BarComponent';
-
-import Julia from '../../assets/julia.jpg';
-
-import Header from '../../Components/Header';
-import TextField from '../../Components/TextField';
-
-import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
 
 const EventEditting: React.FC = () => {
+    const formRef = useRef<FormHandles>(null);
+
+    const makeItSubmit= useCallback(() => {
+        formRef.current?.submitForm();
+    },[formRef]);
+
+    const handleSubmit= useCallback((data) => {
+        console.log(data)
+    },[]);
+
     return(
         <Container>
             <Header />
@@ -50,92 +62,90 @@ const EventEditting: React.FC = () => {
                 </EventDescription>
 
                 <EventInfo>
-                   <EventInfoDiv>
-                      <TextField name="name" title="Nome" />
-                      <TextField name="theme" title="Tema" />
-                      <TextField name="place" title="Local" />
-                      <TextField name="adress" title="Endereço" />
-                      <TextField name="description" title="Descrição" />
-                      <TextField name="mail" title="Email" />
-                      <TextField name="phone" title="Telefone" type="tel"/>
-                      <TextField name="inscription_limit" title="Número máximo de inscrições" type="number" />
-                   </EventInfoDiv>
-
-                   <EventBar>
-
-                        <EventAlterButton>
+                   <EventInfoForm ref={formRef} onSubmit={handleSubmit} >
+                        <TextField name="name" title="Nome" />
+                        <TextField name="theme" title="Tema" />
+                        <TextField name="place" title="Local" />
+                        <TextField name="adress" title="Endereço" />
+                        <TextField name="description" title="Descrição" />
+                        <TextField name="mail" title="Email" />
+                        <TextField name="phone" title="Telefone" type="tel"/>
+                        <TextField name="inscription_limit" title="Número máximo de inscrições" type="number" />
+                    </EventInfoForm>
+                    <EventBar>
+                        <EventAlterButton onClick={makeItSubmit}>
                             <FiSave />
-                            Salvar alterações 
+                             Salvar alterações 
                         </EventAlterButton>
 
-                        <BarComponent title="Organização">
-                            <HostDiv>
-                                <HostPhoto
-                                    src={Julia}
-                                    alt="Julia"
-                                    width={40}
-                                    height={40}>
-                                </HostPhoto>
-                                <HostName>Julia Silva Montano</HostName>
-                            </HostDiv>
-                        </BarComponent>
+                            <BarComponent title="Organização">
+                                <HostDiv>
+                                    <HostPhoto
+                                        src={Julia}
+                                        alt="Julia"
+                                        width={40}
+                                        height={40}>
+                                    </HostPhoto>
+                                    <HostName>Julia Silva Montano</HostName>
+                                </HostDiv>
+                            </BarComponent>
 
-                        <BarComponent title="Data">
-                            <EventDateEditDiv>
+                            <BarComponent title="Data">
+                                <EventDateEditDiv>
 
-                                <EventDateEditTitle>Evento</EventDateEditTitle>
-                                <EventDateEditInfo>
-                                    <FiCalendar size={24} color="#000"/>
-                                    <EventDateEditShow>Indefinido</EventDateEditShow>
-                                    <EventDateButton>
-                                        Editar data
-                                        <FiEdit size={12} />
-                                    </EventDateButton>
-                                </EventDateEditInfo>
+                                    <EventDateEditTitle>Evento</EventDateEditTitle>
+                                    <EventDateEditInfo>
+                                        <FiCalendar size={24} color="#000"/>
+                                        <EventDateEditShow>Indefinido</EventDateEditShow>
+                                        <EventDateButton>
+                                            Editar data
+                                            <FiEdit size={12} />
+                                        </EventDateButton>
+                                    </EventDateEditInfo>
 
-                                <EventDateEditTitle>Inscrições</EventDateEditTitle>
-                                <EventDateEditInfo>
-                                    <FiCalendar size={24} color="#000"/>
-                                    <EventDateEditShow>Indefinido</EventDateEditShow>
-                                    <EventDateButton>
-                                        Editar data
-                                        <FiEdit size={12} />
-                                    </EventDateButton>
-                                </EventDateEditInfo>
+                                    <EventDateEditTitle>Inscrições</EventDateEditTitle>
+                                    <EventDateEditInfo>
+                                        <FiCalendar size={24} color="#000"/>
+                                        <EventDateEditShow>Indefinido</EventDateEditShow>
+                                        <EventDateButton>
+                                            Editar data
+                                            <FiEdit size={12} />
+                                        </EventDateButton>
+                                    </EventDateEditInfo>
+                                    
+                                </EventDateEditDiv>
+                            </BarComponent>
+
+                            <BarComponent title="Participantes" >
+                            <ParticipantLink to="/participants">Mais detalhes</ParticipantLink>
+                            </BarComponent>
+
+                            <BarComponent title="Definições">
+
+                                <DefinitionDiv>
+                                    <DefinitionTitle>Status</DefinitionTitle>
+                                    <DefinitionButton>
+                                        <FiClipboard size={24} />
+                                        <DefinitionText>Confirmado</DefinitionText>
+                                    </DefinitionButton>
+                                </DefinitionDiv>
+
+                                <DefinitionDiv>
+                                    <DefinitionTitle>Visibilidade</DefinitionTitle>
+                                    <DefinitionButton>
+                                        <FiEye size={24} />
+                                        <DefinitionText>Confirmado</DefinitionText>
+                                    </DefinitionButton>
+                                </DefinitionDiv>
                                 
-                            </EventDateEditDiv>
-                        </BarComponent>
-
-                        <BarComponent title="Participantes" >
-                           <ParticipantLink to="/participants">Mais detalhes</ParticipantLink>
-                        </BarComponent>
-
-                        <BarComponent title="Definições">
-
-                            <DefinitionDiv>
-                                <DefinitionTitle>Status</DefinitionTitle>
-                                <DefinitionButton>
-                                    <FiClipboard size={24} />
-                                    <DefinitionText>Confirmado</DefinitionText>
-                                </DefinitionButton>
-                            </DefinitionDiv>
-
-                            <DefinitionDiv>
-                                <DefinitionTitle>Visibilidade</DefinitionTitle>
-                                <DefinitionButton>
-                                    <FiEye size={24} />
-                                    <DefinitionText>Confirmado</DefinitionText>
-                                </DefinitionButton>
-                            </DefinitionDiv>
-                               
-                            <DefinitionDiv>
-                                <DefinitionButton isRed={true}>
-                                    <FiTrash2 size={24} />
-                                    <DefinitionText>Excluir Evento</DefinitionText>
-                                </DefinitionButton>
-                            </DefinitionDiv>
-                        </BarComponent>
-                   </EventBar>
+                                <DefinitionDiv>
+                                    <DefinitionButton isRed={true}>
+                                        <FiTrash2 size={24} />
+                                        <DefinitionText>Excluir Evento</DefinitionText>
+                                    </DefinitionButton>
+                                </DefinitionDiv>
+                            </BarComponent>
+                        </EventBar>
                 </EventInfo>  
                 
             </EventDiv>

@@ -5,12 +5,13 @@ interface ButtonProps{
 }
 
 export const Container = styled.div`
-    width: 704px; 
+    width: 82%; 
+    max-width: 704px;
     height: 64px;
     margin-top: 64px;
 `;
 
-export const SearchBoxForm = styled.form`
+export const SearchBoxDiv = styled.div`
     display: flex;
     flex: 1;
     height: 100%;

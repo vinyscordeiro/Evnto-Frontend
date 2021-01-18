@@ -2,10 +2,12 @@ import styled, {keyframes} from 'styled-components';
 
 import {Link} from 'react-router-dom';
 import background1 from '../../assets/background1.jpg';
+import { Form } from '@unform/web';
 
 export const Container = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     background: #fff url(${background1}) no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -21,6 +23,13 @@ export const Logo = styled.h1`
     font-weight: 400;
 `;
 
+export const SearchForm = styled(Form)`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+`;
+
 
 export const appearFromBottom = keyframes`
     from{
@@ -32,7 +41,8 @@ export const appearFromBottom = keyframes`
 `;
 
 export const SearchResponseBox = styled.div`
-    width: 704px; 
+    width: 82%; 
+    max-width: 704px; 
     margin: 48px 0;
     border-radius: 2px;
     animation: ${appearFromBottom} 0.7s;
@@ -49,7 +59,8 @@ export const SearchResponseUnit = styled(Link)`
     height: 48px;
     border-radius: 2px;
     margin-top: 8px;
-    box-shadow: 2px black;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+
 
     &:hover {
         opacity: 1;

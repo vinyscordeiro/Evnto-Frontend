@@ -39,6 +39,7 @@ export const ProfileBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     margin: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
 `;
 
 export const  AccountForm= styled(Form)`
@@ -124,7 +125,7 @@ export const ButtonView = styled.button`
     justify-content: center;
     width: 50%;
     height: 40px;
-    background-color: #4F7EF4;
+    background: linear-gradient(89.79deg, #4479FF 15.27%, rgba(66, 119, 255, 0) 181.94%);
     outline: 0;
     border: 0;
     color: #FFF;

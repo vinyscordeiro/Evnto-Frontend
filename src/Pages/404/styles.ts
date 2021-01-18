@@ -6,6 +6,7 @@ export const Container = styled.div`
     height: 100vh;
     background: #253A44 url(${background2}) center no-repeat fixed;
     background-size: cover;
+    
 `;
 
 export const Main = styled.main`
@@ -29,4 +30,5 @@ export const Subtitle = styled.h2`
     font-weight: 400;
     background-color: #fff;
     padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
 `;

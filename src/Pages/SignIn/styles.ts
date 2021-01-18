@@ -35,7 +35,6 @@ export const SignInBox = styled.div`
     height: 416px;
     min-width: 400px;
     padding: 8px;
-
 `;
 
 export const SignInBoxForm = styled(Form)`
