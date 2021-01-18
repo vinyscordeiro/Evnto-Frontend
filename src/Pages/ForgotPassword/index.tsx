@@ -1,4 +1,5 @@
 import {useCallback} from 'react';
+import {FiMail} from 'react-icons/fi';
 
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
@@ -29,7 +30,7 @@ const ForgotPassword:React.FC = () => {
                 <Title>Esqueceu sua senha ?</Title>
                 <Subtitle>Não é problema, podemos recuperar com seu email</Subtitle>
 
-                <Input name="mail" placeholder="Email"/>
+                <Input name="mail" icon={FiMail} placeholder="Email"/>
 
                 <ButtonAdapted type="submit">Recuperar Senha</ButtonAdapted>
                 

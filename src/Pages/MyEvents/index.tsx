@@ -15,8 +15,6 @@ import {
     EventText
 } from './styles';
 
-
-
 const MyEvents:React.FC = () => {
     const[eventNow, setEventNow] = useState(true);
     const[eventPast, setEventPast] = useState(false);
@@ -26,7 +24,6 @@ const MyEvents:React.FC = () => {
         setEventNow(true);
         setEventPast(false);
         setEventFuture(false);
-
     }, []);
 
     const handleEventPast = useCallback(() => {

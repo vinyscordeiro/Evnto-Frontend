@@ -57,9 +57,9 @@ const Profile:React.FC = () => {
                             <AccountForm onSubmit={handlePasswordChangeSubmit} >
                                 <AccountTitle>Configurações de conta</AccountTitle>
                                 <AccountSubtitle>Configurações de conta</AccountSubtitle>
-                                <Input name="old_password" placeholder="Senha antiga" icon={FiLock} />
-                                <Input name="new_password" placeholder="Nova Senha" icon={FiLock} />
-                                <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} />
+                                <Input name="old_password" placeholder="Senha antiga" icon={FiLock} type="password" />
+                                <Input name="new_password" placeholder="Nova Senha" icon={FiLock} type="password" />
+                                <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} type="password" />
                                 <Button type="submit">Alterar senha</Button>
                             </AccountForm>
                             <ButtonDiv>

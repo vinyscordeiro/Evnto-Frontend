@@ -69,8 +69,8 @@ const SignUp:React.FC = () => {
                                 <Input name="adress" placeholder="Endereço" icon={FiMap} />
                                 <Input name="city" placeholder="Cidade" icon={FiMapPin} />
                                 <Input name="country" placeholder="País" icon={FiMapPin} />
-                                <Input name="password" placeholder="Senha" icon={FiLock}/>
-                                <Input name="password_confirmation" placeholder="Confirmar senha" icon={FiLock} />
+                                <Input name="password" placeholder="Senha" icon={FiLock} type="password"/>
+                                <Input name="password_confirmation" placeholder="Confirmar senha" icon={FiLock} type="password"/>
         
                                 <ButtonAdapted onClick={handleView} >Anterior</ButtonAdapted>
                                 <ButtonAdapted type="submit" onClick={handleSubmit} >Finalizar</ButtonAdapted>

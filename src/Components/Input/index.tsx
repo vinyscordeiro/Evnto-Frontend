@@ -1,4 +1,4 @@
-import {InputHTMLAttributes, useEffect, useRef} from 'react';
+import {InputHTMLAttributes , useEffect, useRef} from 'react';
 import {useField} from '@unform/core';
 import {Container, BlueDiv, InputElement} from './styles';
 
@@ -10,8 +10,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 }
 
 const Input: React.FC<InputProps> = ({name, icon: Icon,...rest}) => {
-    const inputRef = useRef(null);
-    const { fieldName, registerField} = useField(name);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const { fieldName, error, registerField} = useField(name);
 
     useEffect(() => {
         registerField({

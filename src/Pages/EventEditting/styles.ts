@@ -1,7 +1,9 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { shade } from 'polished';
+import { Form } from '@unform/web';
+
 
 import background from '../../assets/background2.jpg';
 
@@ -27,8 +29,9 @@ export const EventDescription = styled.div`
 
 export const EventInfo = styled.div`
     display: flex;
-    justify-content: space-between;   
-    margin: 56px 8%; 
+    align-items: center;
+    justify-content: center;
+    margin: 56px 0;
 `;
 
 export const EventDescriptionAlignment = styled.div`
@@ -57,9 +60,7 @@ export const EventDays = styled.div`
     color: #FFF;
 `;
 
-export const EventInfoDiv = styled.div`
-    max-width: 776px;
-`;
+export const EventInfoForm = styled(Form)``;
 
 export const EventName = styled.div`
     font-size: 48px;
@@ -76,14 +77,15 @@ export const EventText = styled.div`
 `;
 
 export const EventBar = styled.div`
+    min-width: 254px;
     width: 344px;
-    margin-left: auto;
-    
+    margin-left: 8%;
 `;
 
 export const EventAlterButton = styled.div`
     cursor: pointer;
     background-color: #4E7EF4;
+    width: 100%;
     height: 88px;
     display: flex;
     align-items: center;
