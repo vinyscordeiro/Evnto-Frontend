@@ -1,10 +1,11 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useContext } from 'react';
 
 import {useHistory} from 'react-router-dom';
 import * as Yup from 'yup';
 import {FormHandles} from '@unform/core';
 
 import getValidationErrors  from '../../utils/getValidationErrors';
+import {AuthContext} from '../../context/AuthContext';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -24,28 +25,36 @@ import {
 import {FiLock, FiLogIn, FiMail} from 'react-icons/fi';
 
 interface SignInObject {
-    email: string;
+    mail: string;
     password: string;
 }
 
 const SignIn:React.FC = () => {
     const history = useHistory();
     const formRef = useRef<FormHandles>(null);
+    const {signIn} = useContext(AuthContext);
 
     const handleSubmit = useCallback(async (data: SignInObject) => {
         console.log(data);
         try{
             formRef.current?.setErrors({});
+            
+
             const schema = Yup.object().shape({
                 mail: Yup.string().email('Digite um email valido').required('Email Obrigatório'),
-                password: Yup.string().min(8, 'Mínimo de oito digitos'),
+                password: Yup.string().min(6, 'Mínimo de seis digitos'),
             });
 
             await schema.validate(data, {
                 abortEarly: false,
             });
 
-            history.push('/dashboard');
+            signIn({
+                mail: data.mail, 
+                password: data.password
+            });
+
+            
 
         } catch(err){
             console.log(err);
@@ -55,7 +64,7 @@ const SignIn:React.FC = () => {
         }
 
         
-    },[history]);
+    },[history, signIn]);
 
     return (
     <Container>

@@ -1,4 +1,6 @@
 import { useCallback, useRef } from 'react';
+import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
 
 import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
 
@@ -33,7 +35,7 @@ import {
     DefinitionButton,
     DefinitionText,
 } from './styles';
-import { FormHandles } from '@unform/core';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const EventEditting: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
@@ -42,8 +44,21 @@ const EventEditting: React.FC = () => {
         formRef.current?.submitForm();
     },[formRef]);
 
-    const handleSubmit= useCallback((data) => {
-        console.log(data)
+    const handleSubmit = useCallback(async(data) => {
+        try{
+            formRef.current?.setErrors({});
+            const schema = Yup.object().shape({
+                name: Yup.string().required('Nome obrigatório')
+            });
+            
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+        } catch(err) {
+            const errors = getValidationErrors(err);
+            formRef.current?.setErrors(errors);
+        }
     },[]);
 
     return(

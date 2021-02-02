@@ -1,4 +1,8 @@
-import {useCallback} from 'react';
+import {useCallback, useRef} from 'react';
+import * as Yup from 'yup';
+import { FormHandles } from '@unform/core';
+
+
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
 
@@ -14,18 +18,41 @@ import {
 } from './styles';
 
 import {FiLock, FiLogIn} from 'react-icons/fi';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const RecoverPassword:React.FC = () => {
 
-    const handleSubmit = useCallback((data) => {
+    const formRef = useRef<FormHandles>(null);
+
+    const handleSubmit = useCallback(async (data) => {
         console.log(data);
+        try{
+            formRef.current?.setErrors({});
+            const schema = Yup.object().shape({
+                password: Yup.string().required('Senha obrigatória').min(6, 'Mínimo de seis digitos'),
+                password_confirmation: Yup.string()
+                    .required('Confirmação de senha obrigatória')
+                    .oneOf(
+                    [Yup.ref('password'), undefined],
+                    'Senhas precisam ser iguais',
+                    ),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+        } catch(err) {
+            const errors = getValidationErrors(err);
+            formRef.current?.setErrors(errors);
+        }
     }, []);
 
     return (
     <Container>
         <Header/>
         <RecoverPasswordDiv>
-            <RecoverPasswordForm onSubmit={handleSubmit}>
+            <RecoverPasswordForm ref={formRef} onSubmit={handleSubmit}>
                 <Title>Recuperar sua senha ?</Title>
                 <Subtitle>Podes agora colocar sua nova senha!</Subtitle>
 

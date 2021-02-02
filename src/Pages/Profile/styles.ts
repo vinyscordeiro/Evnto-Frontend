@@ -92,11 +92,12 @@ export const Title = styled.h2`
 export const ChangeView = styled.div`
     width: 315px;
     height: 3px;
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 8px;
 `;
 
 export const View = styled.div<ViewProps>`

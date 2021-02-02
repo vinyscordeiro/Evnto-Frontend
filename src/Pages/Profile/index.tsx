@@ -1,4 +1,5 @@
-import {useState, useCallback} from 'react';
+import {useState, useCallback, useRef} from 'react';
+import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
@@ -24,8 +25,13 @@ import {FiAtSign, FiCalendar, FiChevronsLeft, FiChevronsRight, FiLock, FiMail, F
 
 import profile from '../../assets/profile.jpeg';
 import Button from '../../Components/Button';
+import { FormHandles } from '@unform/core';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const Profile:React.FC = () => {
+    const accountFormRef = useRef<FormHandles>(null);
+    const profileFormRef = useRef<FormHandles>(null);
+
     const [profileView1, setProfileView1] = useState(true);
     const [profileView2, setProfileView2] = useState(false);
     const [accountView, setAccountView] = useState(true);
@@ -39,12 +45,58 @@ const Profile:React.FC = () => {
         setAccountView(!accountView);
     }, [accountView]);
 
-    const handlePasswordChangeSubmit = useCallback((data) => {
-        console.log(data);
+    const handleProfileSubmit = useCallback(() => {
+        profileFormRef.current?.submitForm();
+    }, [profileFormRef]);
+
+    const handlePasswordChangeSubmit = useCallback(async(data) => {
+        try{
+            accountFormRef.current?.setErrors({});
+            const schema = Yup.object().shape({
+                old_password: Yup.string().required('Senha antiga obrigatória'),
+                new_password: Yup.string().required('Senha Obrigatória').min(6, 'Minimo de seis digitos'),
+                new_password_confirmation: Yup.string()
+                .oneOf(
+                    [Yup.ref('password'), undefined],
+                    'Senhas precisam ser iguais',
+                ),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+        } catch(err){
+            const errors = getValidationErrors(err);
+            accountFormRef.current?.setErrors(errors);
+        }
     }, []);
 
-    const handleProfileChangeSubmit = useCallback((data) => {
+    const handleProfileChangeSubmit = useCallback(async (data) => {
         console.log(data);
+        try{
+
+            profileFormRef.current?.setErrors({});
+
+            const schema = Yup.object().shape({
+                name: Yup.string().required('Nome obrigatório'),
+                user: Yup.string().required('Usuário obrigatório'),
+                mail: Yup.string().email('Email inválido').required('Email obrigatório'),
+                birthday: Yup.string().required('Data de aniversário obrigatória'),
+                sex: Yup.string().required('Sexo obrigatório'),
+                adress: Yup.string().required('Endereço obrigatório'),
+                city: Yup.string().required('Cidade Obrigatória'),
+                country: Yup.string().required('País obrigatório'),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+        }catch(err) {
+            const errors = getValidationErrors(err);
+            profileFormRef.current?.setErrors(errors);
+        }
     }, []);
 
     return (
@@ -54,7 +106,7 @@ const Profile:React.FC = () => {
                 <ProfileBox>
                     {accountView ? 
                         <>
-                            <AccountForm onSubmit={handlePasswordChangeSubmit} >
+                            <AccountForm ref={accountFormRef} onSubmit={handlePasswordChangeSubmit} >
                                 <AccountTitle>Configurações de conta</AccountTitle>
                                 <AccountSubtitle>Configurações de conta</AccountSubtitle>
                                 <Input name="old_password" placeholder="Senha antiga" icon={FiLock} type="password" />
@@ -75,7 +127,7 @@ const Profile:React.FC = () => {
                         </>
                         :
                         <>
-                            <ProfileForm onSubmit={handleProfileChangeSubmit}>
+                            <ProfileForm ref={profileFormRef} onSubmit={handleProfileChangeSubmit}>
                                 <Photo src={profile} width="184px" height="184px"/>
                                 <Title>Perfil</Title>
                                     <ChangeView>
@@ -118,7 +170,7 @@ const Profile:React.FC = () => {
                                         <FiChevronsLeft />
                                         Anterior
                                     </ButtonView>
-                                    <ButtonView type="submit">
+                                    <ButtonView type="submit" onClick={handleProfileSubmit} >
                                         Salvar Alterações
                                         <FiSave />
                                     </ButtonView>
