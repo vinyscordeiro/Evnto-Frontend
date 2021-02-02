@@ -11,7 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 const TextField: React.FC<InputProps> = ({name,title, ...rest}) => {
     const [isFocused, setIsFocused] = useState(false);
     const textRef = useRef(null);
-    const {registerField, fieldName} = useField(name);
+    const {registerField, defaultValue, fieldName} = useField(name);
 
     useEffect(() => {
         registerField({
@@ -38,6 +38,7 @@ const TextField: React.FC<InputProps> = ({name,title, ...rest}) => {
             >{title}</Placeholder>
             <InputElement 
                 ref={textRef}
+                defaultValue={defaultValue}
                 onFocus={handleTextFieldFocus}
                 onBlur={handleTextFieldBlur}
             {...rest}/>

@@ -1,6 +1,7 @@
-import {InputHTMLAttributes , useEffect, useRef} from 'react';
+import {InputHTMLAttributes , useCallback, useEffect, useRef, useState} from 'react';
 import {useField} from '@unform/core';
-import {Container, BlueDiv, InputElement} from './styles';
+
+import {Container, InputDiv, ColoredDiv, InputElement, ErrorDiv} from './styles';
 
 import {IconBaseProps} from 'react-icons';
 
@@ -12,6 +13,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 const Input: React.FC<InputProps> = ({name, icon: Icon,...rest}) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const { fieldName, error, registerField} = useField(name);
+    const [isErrored,setIsErrored] = useState(false);
+    
+
+    useEffect(() => {
+        if(error){
+            setIsErrored(true);
+        }else {
+            setIsErrored(false);
+        }
+    },[setIsErrored,error]);
 
     useEffect(() => {
         registerField({
@@ -21,12 +32,19 @@ const Input: React.FC<InputProps> = ({name, icon: Icon,...rest}) => {
         });
     },[fieldName, registerField]);
 
+    const handleFocus = useCallback(() => {
+        setIsErrored(false);
+    },[setIsErrored]);
+
     return(
         <Container>
-            <BlueDiv>
-                {Icon && <Icon /> }
-            </BlueDiv>
-            <InputElement ref={inputRef} {...rest}/>
+            <InputDiv>
+                <ColoredDiv isErrored={isErrored}>
+                    {Icon && <Icon /> }
+                </ColoredDiv>
+                <InputElement isErrored={isErrored} ref={inputRef} onFocus={handleFocus} {...rest}/>
+            </InputDiv>
+            {isErrored && <ErrorDiv>{error}</ErrorDiv> }
         </Container>
     );
 };

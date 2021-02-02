@@ -15,7 +15,7 @@ interface InputsDivProps{
 }
 
 export const Container = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background: #253A44 url(${background4}) no-repeat fixed;
     background-size: cover;
@@ -24,7 +24,7 @@ export const Container = styled.div`
 `;
 
 export const ChangeView = styled.div`
-    margin-top: 8px;
+    margin: 8px 0 16px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -58,9 +58,11 @@ export const SignUpDiv = styled.div`
     margin-left: auto;
 `;
 
-export const SignUpCenteredDiv = styled.div``;
+export const SignUpCenteredDiv = styled.div`
+`;
 
-export const SignUpForm = styled(Form)``;
+export const SignUpForm = styled(Form)`
+`;
 
 export const Title = styled.h2`
     font-size: 48px;
@@ -68,7 +70,7 @@ export const Title = styled.h2`
 `;
 
 export const ButtonAdapted = styled(Button)`
-    margin: 35px 5px;
+    margin: 24px 5px;
 `;
 
 export const SignInDiv = styled.div`
@@ -82,6 +84,7 @@ export const SignInDiv = styled.div`
 `;
 
 export const SignInLink = styled(Link)`
+    margin: 8px;
     text-decoration: none;
     font-size: 1.125em;
     color: #000;

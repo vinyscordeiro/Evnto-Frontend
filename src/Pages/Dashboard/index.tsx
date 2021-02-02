@@ -1,3 +1,5 @@
+import React, {useState, useCallback} from 'react';
+
 import Header from '../../Components/Header';
 import SearchBox from '../../Components/SearchBox';
 
@@ -11,13 +13,42 @@ import {
 } from './styles';
 
 import {FiCalendar, FiMapPin} from 'react-icons/fi';
-import { useCallback } from 'react';
+
+interface EventProps {
+    id: number;
+    name: string;
+    date: string;
+    location: string;
+}
 
 const Dashboard:React.FC = () => {
+    const [events,setEvents] = useState<EventProps[]>([]);
 
-    const handleSubmit = useCallback((data) => {
-        console.log(data);
-    },[]);
+    const handleSubmit = useCallback(() => {
+
+        setEvents([
+            {   
+                id: 1,
+                name:"Seguindo seus passos",
+                date: "24/12/2020 a 27/12/2020",
+                location: "Fazenda Mucugê"
+            },
+            {
+                id: 2,
+                name:"Retiro",
+                date: "24/12/2020 a 27/12/2020",
+                location: "Fazenda Emaus"
+            },
+            {
+                id: 3,
+                name:"Festival de inverno",
+                date: "24/12/2021 a 27/12/2021",
+                location: "Parque de exposição"
+            },
+        ]);
+
+        console.log(events);
+    },[events]);
 
     return (
     <Container >
@@ -29,99 +60,24 @@ const Dashboard:React.FC = () => {
         </SearchForm>
 
         <SearchResponseBox>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
+            { events.map((e) => {
+                return(
+                    <SearchResponseUnit to="/eventuse" key={e.id}>
+                        <Info>{e.name}</Info>
 
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            <SearchResponseUnit to="/eventuse">
-                <Info>Seguindo seus passos</Info>
-
-                <Info>
-                    <FiCalendar size={24} />
-                    24/12/2020 a 27/12/2020
-                </Info>
-                
-                <Info>
-                    <FiMapPin size={24} />
-                    Fazenda Mucugê
-                </Info>
-            </SearchResponseUnit>
-            
+                        <Info>
+                            <FiCalendar size={24} />
+                        {e.date}
+                        </Info>
+                    
+                        <Info>
+                            <FiMapPin size={24} />
+                            {e.location}
+                        </Info>
+                    </SearchResponseUnit>
+                )  
+            })}
+        
           
         </SearchResponseBox>
     </Container>

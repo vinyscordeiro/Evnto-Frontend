@@ -29,8 +29,10 @@ export const Title = styled.h1`
 `;
 
 export const EventsDiv = styled.div`
-   min-width: 60em;
-   margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    min-width: 60em;
+    margin: 48px 0 15%;
 `;
 
 export const EventSelection = styled.div`

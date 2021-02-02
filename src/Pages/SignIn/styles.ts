@@ -48,13 +48,13 @@ export const SignInBoxForm = styled(Form)`
 `;
 
 export const Title = styled.h2`
-    margin-top: 35px;
+    margin: 35px 0 15px;
     font-size: 36px;
     font-weight: 400;
 `;
 
 export const ForgotPassword = styled(Link)`
-    margin: 25px 0 25px;
+    margin: 12px 0 24px;
     text-decoration: none;
     font-size: 18px;
     color: #000;

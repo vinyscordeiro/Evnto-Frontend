@@ -1,4 +1,6 @@
-import { useState, useCallback} from 'react';
+import { useState, useCallback, useRef} from 'react';
+import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
@@ -29,18 +31,51 @@ import {
     FiMapPin,
 
 } from 'react-icons/fi';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const SignUp:React.FC = () => {
     const [view1, setView1] = useState(true);
     const [view2, setView2] = useState(false);
+    const formRef = useRef<FormHandles>(null);
 
     const handleView = useCallback(() => {
         setView1(!view1);
         setView2(!view2);
     }, [view1, view2]);
 
-    const handleSubmit = useCallback((data) => {
+    const handleSubmit = useCallback(async (data) => {
         console.log(data);
+        try{
+
+            formRef.current?.setErrors({});
+
+            const schema = Yup.object().shape({
+                name: Yup.string().required('Nome obrigatório'),
+                user: Yup.string().required('Usuário obrigatório'),
+                mail: Yup.string().email('Email inválido').required('Email obrigatório'),
+                birthday: Yup.string().required('Data de aniversário obrigatória'),
+                sex: Yup.string().required('Sexo obrigatório'),
+                adress: Yup.string().required('Endereço obrigatório'),
+                city: Yup.string().required('Cidade Obrigatória'),
+                country: Yup.string().required('País obrigatório'),
+                password: Yup.string().required('Senha obrigatória').min(6, 'Mínimo de seis letras'),
+                password_confirmation: Yup.string()
+                    .required('Confirmação de senha obrigatória')
+                    .oneOf(
+                    [Yup.ref('password'), undefined],
+                    'Senhas precisam ser iguais',
+                    ),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+        }catch(err) {
+            const errors = getValidationErrors(err);
+            formRef.current?.setErrors(errors);
+        }
+        
     }, []);
 
     return (
@@ -48,7 +83,7 @@ const SignUp:React.FC = () => {
         <Header />
             <SignUpDiv>
                 <SignUpCenteredDiv>
-                    <SignUpForm onSubmit={handleSubmit}>
+                    <SignUpForm ref={formRef} onSubmit={handleSubmit}>
                         <Title>Cadastro</Title>
 
                         <ChangeView>
@@ -62,7 +97,7 @@ const SignUp:React.FC = () => {
                                 <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
                                 <Input name="sex" placeholder="Sexo" icon={FiUsers} />
                                 
-                                <ButtonAdapted onClick={handleView} >Seguinte</ButtonAdapted>
+                                <ButtonAdapted type="button" onClick={handleView} >Seguinte</ButtonAdapted>
                             </InputsDiv>
 
                             <InputsDiv available={view2}>
@@ -72,7 +107,7 @@ const SignUp:React.FC = () => {
                                 <Input name="password" placeholder="Senha" icon={FiLock} type="password"/>
                                 <Input name="password_confirmation" placeholder="Confirmar senha" icon={FiLock} type="password"/>
         
-                                <ButtonAdapted onClick={handleView} >Anterior</ButtonAdapted>
+                                <ButtonAdapted type="button" onClick={handleView} >Anterior</ButtonAdapted>
                                 <ButtonAdapted type="submit" onClick={handleSubmit} >Finalizar</ButtonAdapted>
                             </InputsDiv>
                     </SignUpForm>

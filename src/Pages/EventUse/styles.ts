@@ -23,7 +23,7 @@ export const EventInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 56px 8%;
+    padding: 56px 10%;
 `;
 
 export const EventDescriptionAlignment = styled.div`
@@ -33,7 +33,7 @@ export const EventDescriptionAlignment = styled.div`
     justify-content: space-between;
     height: 232px;
     background: #253A44 url(${background}) no-repeat fixed;
-    padding: 0 8%;
+    padding: 0 10%;
 `;
 
 export const EventTitle = styled.div`
