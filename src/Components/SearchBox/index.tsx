@@ -51,7 +51,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({placeholder, name, ...rest}) => {
         <Container> 
             <SearchBoxDiv>
                 <SearchBoxInput ref={searchBoxRef} placeholder={placeholder} onChange={handleWritting}/> 
-                <SearchBoxButton type="submit" isFilled={filled} {...rest} >
+                <SearchBoxButton type="submit" isFilled={filled} {...rest} disabled={!filled}>
                     <FiSearch size={28} />
                 </SearchBoxButton>
             </SearchBoxDiv>

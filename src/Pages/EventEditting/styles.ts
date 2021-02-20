@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 import { Form } from '@unform/web';
 
-
 import background from '../../assets/background2.jpg';
 
 
@@ -41,6 +40,16 @@ export const EventDescriptionAlignment = styled.div`
     justify-content: space-around;
     height: 232px;
     background: #253A44 url(${background}) no-repeat fixed;
+`;
+
+export const ImageUpload = styled.div`
+    position: absolute;
+    right: 30px;
+    color: #fff;
+
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 export const EventTitle = styled.div`

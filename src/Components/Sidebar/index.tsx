@@ -1,6 +1,6 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
-import { FiClipboard, FiHome, FiPlus, FiSettings, FiUser } from 'react-icons/fi';
+import { FiClipboard, FiHome, FiPlus, FiUser } from 'react-icons/fi';
 
 import Profile from '../../assets/profile.jpeg';
 
@@ -20,8 +20,34 @@ import {
     
 } from './styles';
 
-const Sidebar: React.FC= () => {
+export interface SidebarProps {
+    pagename ?: "dashboard" | 'profile' | 'myEvents' | 'createEvent';
+}
+
+const Sidebar: React.FC<SidebarProps> = ({pagename}:SidebarProps) => {
     const [sidebarVisible, setSidebarVisible] = useState(false);
+    const [dashboard,setDashboard] = useState(false);
+    const [profile,setProfile] = useState(false);
+    const [myEvents,setMyEvents] = useState(false);
+    const [createEvent,setCreateEvent] = useState(false);
+
+
+    useEffect(() => {
+        switch(pagename){
+            case 'dashboard':
+                setDashboard(true);
+            break;
+            case 'profile':
+                setProfile(true);
+            break;
+            case 'myEvents':
+                setMyEvents(true);
+            break;
+            case 'createEvent':
+                setCreateEvent(true);  
+            break;
+        }
+    },[pagename]);
 
     const handleSidebar = useCallback(( )=> {
         setSidebarVisible(!sidebarVisible);
@@ -40,23 +66,19 @@ const Sidebar: React.FC= () => {
                     </WelcomeDiv>
 
                     <SidebarLinkDiv>
-                         <SidebarLinkUnit isSelected={true} to="/dashboard">
+                         <SidebarLinkUnit isSelected={dashboard} to="/dashboard">
                             <FiHome />
                             Home
                         </SidebarLinkUnit>
-                        <SidebarLinkUnit isSelected={false} to="/profile">
+                        <SidebarLinkUnit isSelected={profile} to="/profile">
                             <FiUser />
                             Meu Perfil
                         </SidebarLinkUnit>
-                        <SidebarLinkUnit isSelected={false} to="/profile">
-                            <FiSettings />
-                            Configurações de conta
-                        </SidebarLinkUnit>
-                        <SidebarLinkUnit isSelected={false} to="/myevents">
+                        <SidebarLinkUnit isSelected={myEvents} to="/myevents">
                             <FiClipboard />
                             Meus Eventos
                         </SidebarLinkUnit>
-                        <SidebarLinkUnit isSelected={false} to="/eventeditting">
+                        <SidebarLinkUnit isSelected={createEvent} to="/eventeditting">
                             <FiPlus />
                             Criar Evento
                         </SidebarLinkUnit>

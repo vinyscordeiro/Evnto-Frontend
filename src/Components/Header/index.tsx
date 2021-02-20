@@ -1,14 +1,16 @@
 import {Container, Logo} from './styles';
 
-import Sidebar from '../Sidebar';
+import {useAuth} from '../../hooks/AuthContext';
+import Sidebar, {SidebarProps} from '../Sidebar';
 
-const Header: React.FC = () => {
+
+const Header: React.FC<SidebarProps> = ({pagename}:SidebarProps) => {
+    const {user} = useAuth();
 
     return(
         <Container>
             <Logo href="/">EVNTO</Logo>
-            <Sidebar />
-               
+            {!user && <Sidebar pagename={pagename} />}
         </Container>)
 };
 

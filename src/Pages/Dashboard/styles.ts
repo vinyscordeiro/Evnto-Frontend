@@ -45,7 +45,6 @@ export const SearchResponseBox = styled.div`
     max-width: 704px; 
     margin: 48px 0;
     border-radius: 2px;
-    animation: ${appearFromBottom} 0.7s;
 `;
 
 export const SearchResponseUnit = styled(Link)`
@@ -56,10 +55,11 @@ export const SearchResponseUnit = styled(Link)`
     color: #000;
     text-decoration: none;
     background-color: #fff;
-    height: 48px;
+    min-height: 48px;
     border-radius: 2px;
     margin-top: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    animation: ${appearFromBottom} 0.7s;
 
 
     &:hover {
@@ -79,6 +79,8 @@ export const SearchResponseUnit = styled(Link)`
 export const Info = styled.div`
     display: flex;
     justify-content: center;
+    width: 33%;
+    text-align: center;
 
     svg {
         color: #4661C2;

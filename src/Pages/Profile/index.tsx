@@ -1,4 +1,4 @@
-import {useState, useCallback, useRef} from 'react';
+import {useState, useCallback, useRef, useEffect} from 'react';
 import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
@@ -43,11 +43,16 @@ const Profile:React.FC = () => {
 
     const handleAccountView = useCallback(() => {
         setAccountView(!accountView);
+        console.log(accountView);
     }, [accountView]);
 
     const handleProfileSubmit = useCallback(() => {
         profileFormRef.current?.submitForm();
     }, [profileFormRef]);
+
+    useEffect(() => {
+
+    },[]);
 
     const handlePasswordChangeSubmit = useCallback(async(data) => {
         try{
@@ -101,7 +106,7 @@ const Profile:React.FC = () => {
 
     return (
     <Container>
-        <Header />
+            <Header pagename="profile"/>
             <ProfileDiv>
                 <ProfileBox>
                     {accountView ? 

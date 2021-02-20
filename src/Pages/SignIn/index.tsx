@@ -1,15 +1,16 @@
-import React, { useCallback, useRef, useContext } from 'react';
+import React, {useCallback, useRef} from 'react';
 
 import {useHistory} from 'react-router-dom';
 import * as Yup from 'yup';
 import {FormHandles} from '@unform/core';
 
 import getValidationErrors  from '../../utils/getValidationErrors';
-import {AuthContext} from '../../context/AuthContext';
+import {useAuth} from '../../hooks/AuthContext';
+import {useToast} from '../../hooks/ToastContext';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
-import Header from '../../Components/Header'; 
+import Header from '../../Components/Header';
 
 import {
     Container,
@@ -32,13 +33,13 @@ interface SignInObject {
 const SignIn:React.FC = () => {
     const history = useHistory();
     const formRef = useRef<FormHandles>(null);
-    const {signIn} = useContext(AuthContext);
+    const {signIn} = useAuth();
+    const {addToast} = useToast();
 
     const handleSubmit = useCallback(async (data: SignInObject) => {
         console.log(data);
         try{
             formRef.current?.setErrors({});
-            
 
             const schema = Yup.object().shape({
                 mail: Yup.string().email('Digite um email valido').required('Email Obrigatório'),
@@ -49,22 +50,28 @@ const SignIn:React.FC = () => {
                 abortEarly: false,
             });
 
-            signIn({
+            await signIn({
                 mail: data.mail, 
                 password: data.password
             });
 
-            
+            history.push('/dashboard');
 
+        
         } catch(err){
             console.log(err);
             const errors = getValidationErrors(err);
 
             formRef.current?.setErrors(errors);
+            
+            addToast({
+                title: 'Erro ao fazer login',
+                subtitle: 'Verifique sua senha e seu email',
+                type: 'error',
+                right: true
+            });
         }
-
-        
-    },[history, signIn]);
+    },[history, signIn, addToast]);
 
     return (
     <Container>
