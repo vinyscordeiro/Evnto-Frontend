@@ -40,7 +40,7 @@ const MyEvents:React.FC = () => {
 
     return (
         <Container>
-            <Header />
+            <Header pagename="myEvents"/>
             <Title>Meus Eventos</Title>
 
             <EventsDiv>

@@ -49,6 +49,8 @@ export const InputElement = styled.input<ColoredDivProps>`
     outline: 0;
     background-color: #D4DFF9;
     transition: background-color 0.7s;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 16px;
 
     &::placeholder{
         color: #635A5A;

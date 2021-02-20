@@ -45,6 +45,30 @@ const Dashboard:React.FC = () => {
                 date: "24/12/2021 a 27/12/2021",
                 location: "Parque de exposição"
             },
+            {
+                id: 4,
+                name:"Festival de inverno",
+                date: "24/12/2021 a 27/12/2021",
+                location: "Parque de exposição"
+            },
+            {
+                id: 5,
+                name:"Festival de inverno",
+                date: "24/12/2021 a 27/12/2021",
+                location: "Parque de exposição"
+            },
+            {
+                id: 6,
+                name:"Festival de inverno",
+                date: "24/12/2021 a 27/12/2021",
+                location: "Parque de exposição"
+            },
+            {
+                id: 7,
+                name:"Festival de invernoaaaaaaaaaaaaaaaaaaaaa aldkfnvsjdkf n dfvdjfsgrjkf",
+                date: "24/12/2021 a 27/12/2021",
+                location: "Parque de exposição"
+            },
         ]);
 
         console.log(events);
@@ -52,7 +76,7 @@ const Dashboard:React.FC = () => {
 
     return (
     <Container >
-        <Header />
+        <Header pagename="dashboard" />
         <Logo>EVNTO</Logo>
         
         <SearchForm onSubmit={handleSubmit}>

@@ -2,6 +2,9 @@ import { useState, useCallback, useRef} from 'react';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import getValidationErrors from '../../utils/getValidationErrors';
+import {useToast} from '../../hooks/ToastContext';
+
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
 
@@ -31,12 +34,12 @@ import {
     FiMapPin,
 
 } from 'react-icons/fi';
-import getValidationErrors from '../../utils/getValidationErrors';
 
 const SignUp:React.FC = () => {
     const [view1, setView1] = useState(true);
     const [view2, setView2] = useState(false);
     const formRef = useRef<FormHandles>(null);
+    const {addToast} = useToast();
 
     const handleView = useCallback(() => {
         setView1(!view1);
@@ -71,12 +74,30 @@ const SignUp:React.FC = () => {
                 abortEarly: false,
             });
 
+            addToast({
+                title: 'Conta criada com sucesso',
+                subtitle: 'Podes agora fazer login na página inicial.',
+                type: 'sucess',
+                right: false
+            });
+
         }catch(err) {
             const errors = getValidationErrors(err);
             formRef.current?.setErrors(errors);
+
+            if (err instanceof Yup.ValidationError) {
+               return;
+            } else {
+                addToast({
+                    title: 'Erro ao criar sua conta',
+                    subtitle: 'Tente novamente mais tarde',
+                    type: 'error',
+                    right: false,
+                });
+            }
         }
         
-    }, []);
+    }, [addToast]);
 
     return (
     <Container>

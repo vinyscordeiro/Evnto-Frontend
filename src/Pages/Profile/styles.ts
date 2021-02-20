@@ -4,7 +4,7 @@ import {shade} from 'polished';
 
 import background from '../../assets/background3.jpg';
 
-interface ViewProps{
+interface ViewProps {
     isSelected: Boolean;
 }
 
@@ -91,7 +91,7 @@ export const Title = styled.h2`
 
 export const ChangeView = styled.div`
     width: 315px;
-    height: 3px;
+    min-height: 3px;
     margin-top: 4px;
     display: flex;
     flex-direction: row;

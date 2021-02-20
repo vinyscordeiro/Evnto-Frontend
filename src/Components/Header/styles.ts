@@ -14,5 +14,5 @@ export const Logo = styled.a`
     font-weight: bold;
     color: #000;
     text-decoration: none;
-    margin-left: 2em;
+    margin-left: 6%;
 `;

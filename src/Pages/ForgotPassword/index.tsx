@@ -41,7 +41,7 @@ const ForgotPassword:React.FC = () => {
 
     return (
     <Container>
-        <Header/>
+        <Header pagename="profile"/>
         <ForgotPasswordDiv>
             <ForgotPasswordForm ref={formRef} onSubmit={handleSubmit}>
                 <Title>Esqueceu sua senha ?</Title>

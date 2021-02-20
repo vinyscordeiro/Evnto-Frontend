@@ -6,6 +6,9 @@ import { FormHandles } from '@unform/core';
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
 
+import {useToast} from '../../hooks/ToastContext';
+import getValidationErrors from '../../utils/getValidationErrors';
+
 import {
     Container,
     RecoverPasswordDiv,
@@ -18,11 +21,12 @@ import {
 } from './styles';
 
 import {FiLock, FiLogIn} from 'react-icons/fi';
-import getValidationErrors from '../../utils/getValidationErrors';
 
 const RecoverPassword:React.FC = () => {
 
     const formRef = useRef<FormHandles>(null);
+    const {addToast} = useToast();
+
 
     const handleSubmit = useCallback(async (data) => {
         console.log(data);
@@ -45,6 +49,13 @@ const RecoverPassword:React.FC = () => {
         } catch(err) {
             const errors = getValidationErrors(err);
             formRef.current?.setErrors(errors);
+
+            addToast({
+                title: 'Erro ao fazer login',
+                subtitle: 'Tente novamente mais tarde',
+                type: 'error',
+                right: false
+            });
         }
     }, []);
 
