@@ -57,7 +57,7 @@ const RecoverPassword:React.FC = () => {
                 right: false
             });
         }
-    }, []);
+    }, [addToast]);
 
     return (
     <Container>

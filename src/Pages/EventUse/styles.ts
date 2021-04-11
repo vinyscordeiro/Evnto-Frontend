@@ -21,25 +21,38 @@ export const EventDescription = styled.div`
 
 export const EventInfo = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 56px 10%;
+
+    @media screen and (max-width: 1100px) {
+        flex-direction: column;
+        
+    }
 `;
 
 export const EventDescriptionAlignment = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+
+    align-items: center;
     height: 232px;
     background: #253A44 url(${background}) no-repeat fixed;
     padding: 0 10%;
+
+    @media screen and (max-width: 1100px) {
+        flex-direction: column;
+        justify-content: space-around;
+    }
 `;
 
 export const EventTitle = styled.div`
     font-size: 72px;
     color: #fff;
-    max-height: 100%;
+    
+    @media screen and (max-width: 800px) {
+        font-size: 9vw;
+    }
 `;
 
 export const EventButton = styled.button`
@@ -88,7 +101,6 @@ export const EventDays = styled.div`
 `;
 
 export const EventInfoDiv = styled.div`
-    width: 55%;
     max-width: 776px;
 `;
 
@@ -107,7 +119,14 @@ export const EventText = styled.div`
 `;
 
 export const EventBar = styled.div`
+    min-width: 254px;
     width: 344px;
+    margin-left: 8%;
+
+    @media screen and (max-width: 1100px) {
+        margin-left: 0;
+        width: 100%;
+    }
 `;
 
 export const EventRegistration = styled.div`
@@ -118,6 +137,11 @@ export const EventRegistration = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 1100px) {
+        margin-top: 24px;
+        width: 100%;
+    }
 
 `;
 

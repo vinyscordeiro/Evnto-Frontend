@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2, FiUpload } from 'react-icons/fi';
+import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
 
 import BarComponent from '../../Components/BarComponent';
 import Header from '../../Components/Header';
@@ -16,7 +16,6 @@ import {
     EventDescription,
     EventInfo,
     EventDescriptionAlignment,
-    ImageUpload,
     EventTitle,
     EventDays,
     EventInfoForm,
@@ -71,9 +70,6 @@ const EventEditting: React.FC = () => {
                         <EventTitle>
                             Seguindo seus passos
                         </EventTitle>
-                        <ImageUpload>
-                            <FiUpload size={24}/>
-                        </ImageUpload>
                     </EventDescriptionAlignment>
                     <EventDays>
                         FALTAM 4 DIAS
@@ -102,8 +98,8 @@ const EventEditting: React.FC = () => {
                                     <HostPhoto
                                         src={Julia}
                                         alt="Julia"
-                                        width={40}
-                                        height={40}>
+                                        width={32}
+                                        height={32}>
                                     </HostPhoto>
                                     <HostName>Julia Silva Montano</HostName>
                                 </HostDiv>

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import {FiCalendar, FiMap, FiClipboard, FiSettings} from 'react-icons/fi';
+import {FiCalendar, FiMap, FiClipboard} from 'react-icons/fi';
 
 import Header from '../../Components/Header';
 
@@ -56,22 +56,17 @@ const MyEvents:React.FC = () => {
                             <EventText>Retiro Seguindo seus passos</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiCalendar size={18}/>
-                            <EventText>20/12/2020</EventText>
+                            <FiCalendar />
+                            <EventText>20/12/2020 a 22/12/2020</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiMap size={18}/>
+                            <FiMap />
                             <EventText>Fazenda Mucugê</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiClipboard size={18} />
+                            <FiClipboard  />
                             <EventText>Disponível</EventText>
                         </EventContainer>
-                        <EventContainer iconRotation={true}>
-                            <FiSettings size={18} />
-                            <EventText>Definiçoes</EventText>
-                        </EventContainer>
-
                     </Event>
 
                     <Event to="/eventuse">
@@ -79,20 +74,16 @@ const MyEvents:React.FC = () => {
                             <EventText>Retiro Seguindo seus passos</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiCalendar size={18}/>
-                            <EventText>20/12/2020</EventText>
+                            <FiCalendar />
+                            <EventText>20/12/2020 a 22/12/2020</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiMap size={18}/>
+                            <FiMap />
                             <EventText>Fazenda Mucugê</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiClipboard size={18} />
+                            <FiClipboard  />
                             <EventText>Disponível</EventText>
-                        </EventContainer>
-                        <EventContainer iconRotation={true}>
-                            <FiSettings size={18} />
-                            <EventText>Definiçoes</EventText>
                         </EventContainer>
                     </Event>
                 </>
@@ -104,20 +95,16 @@ const MyEvents:React.FC = () => {
                             <EventText>Retiro Seguindo seus passos</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiCalendar size={18}/>
-                            <EventText>20/12/2020</EventText>
+                            <FiCalendar />
+                            <EventText>20/12/2020 a 22/12/2020</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiMap size={18}/>
+                            <FiMap />
                             <EventText>Fazenda Mucugê</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiClipboard size={18} />
+                            <FiClipboard  />
                             <EventText>Disponível</EventText>
-                        </EventContainer>
-                        <EventContainer iconRotation={true}>
-                            <FiSettings size={18} />
-                            <EventText>Definiçoes</EventText>
                         </EventContainer>
                     </Event>        
                 </>
@@ -129,20 +116,16 @@ const MyEvents:React.FC = () => {
                             <EventText>Retiro Seguindo seus passos</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiCalendar size={18}/>
-                            <EventText>20/12/2020</EventText>
+                            <FiCalendar />
+                            <EventText>20/12/2020 a 22/12/2020</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiMap size={18}/>
+                            <FiMap />
                             <EventText>Fazenda Mucugê</EventText>
                         </EventContainer>
                         <EventContainer>
-                            <FiClipboard size={18} />
+                            <FiClipboard  />
                             <EventText>Disponível</EventText>
-                        </EventContainer>
-                        <EventContainer iconRotation={true}>
-                            <FiSettings size={18} />
-                            <EventText>Definiçoes</EventText>
                         </EventContainer>
                     </Event>
                 </>
