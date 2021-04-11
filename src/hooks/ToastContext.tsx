@@ -24,7 +24,6 @@ export const ToastProvider: React.FC = ({children}) => {
     const addToast =  useCallback(({title, subtitle, type, right}:Omit<ToastProps, 'id'>) => {
         const id = uuid();
         setInRight(!!right);
-        console.log(inRight);
     
         const toast = {
             id,
@@ -35,7 +34,7 @@ export const ToastProvider: React.FC = ({children}) => {
 
         setMessages([...messages,toast]);
 
-    },[inRight, messages]);
+    },[messages]);
 
     const removeToast =  useCallback((id: string)=>{
         const mess = messages.filter(message => message.id !== id);
@@ -45,7 +44,9 @@ export const ToastProvider: React.FC = ({children}) => {
     return(
         <ToastContext.Provider value={{addToast, removeToast}}>
             {children}
-            <ToastContainer messages={messages} right={inRight}/>
+            {   messages &&
+                <ToastContainer messages={messages} right={inRight}/>
+            }
         </ToastContext.Provider>
     );
 };

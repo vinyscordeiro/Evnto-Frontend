@@ -30,7 +30,12 @@ export const EventInfo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 56px 0;
+    margin: 56px 32px;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        margin: 56px 32px 0;
+    }
 `;
 
 export const EventDescriptionAlignment = styled.div`
@@ -42,19 +47,13 @@ export const EventDescriptionAlignment = styled.div`
     background: #253A44 url(${background}) no-repeat fixed;
 `;
 
-export const ImageUpload = styled.div`
-    position: absolute;
-    right: 30px;
-    color: #fff;
-
-    &:hover{
-        cursor: pointer;
-    }
-`;
-
 export const EventTitle = styled.div`
     font-size: 72px;
     color: #fff;
+    
+    @media screen and (max-width: 700px) {
+        font-size: 10vw;
+    }
 `;
 
 export const EventDays = styled.div`
@@ -69,7 +68,10 @@ export const EventDays = styled.div`
     color: #FFF;
 `;
 
-export const EventInfoForm = styled(Form)``;
+export const EventInfoForm = styled(Form)`
+    width: 100%;
+    max-width: 778px;
+`;
 
 export const EventName = styled.div`
     font-size: 48px;
@@ -89,6 +91,14 @@ export const EventBar = styled.div`
     min-width: 254px;
     width: 344px;
     margin-left: 8%;
+    
+    @media screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 16px;
+    }
 `;
 
 export const EventAlterButton = styled.div`
@@ -101,6 +111,7 @@ export const EventAlterButton = styled.div`
     justify-content: center;
     font-size: 24px;
     color: #FFF;
+    margin-top: 24px;
 
     > svg {
         margin-right: 16px;
@@ -160,7 +171,7 @@ export const EventDateButton = styled.button`
         color:  #4F7EF4;
 
         > svg {
-        color: #4F7EF4;
+            color: #4F7EF4;
         }
     }
 

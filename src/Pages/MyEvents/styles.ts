@@ -7,10 +7,6 @@ interface SubtitleProps{
     isSelected ?: Boolean;
 }
 
-interface EventContainerProps{
-    iconRotation ?: Boolean;
-}
-
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
@@ -31,7 +27,7 @@ export const Title = styled.h1`
 export const EventsDiv = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 60em;
+    min-width: 54em;
     margin: 48px 0 15%;
 `;
 
@@ -86,28 +82,25 @@ export const Event = styled(Link)`
     color: #000;
     animation: ${appearFromBottom} 0.8s;
 
+
     &:hover {
         border: 2px solid #4661C2;
         opacity: 1;
     }
 `;
 
-export const EventContainer = styled.div<EventContainerProps>`
+export const EventContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
 
-    ${props => props.iconRotation && css`
-        font-weight: bold;
-        &:hover{
-            color: #4232FA;
-            > svg {
-                transform: rotate(360deg);
-                transition: transform 3s;
-            }
-        }
-    `};
+    > svg {
+        color: #4661C2;
+        width: 18px;
+        height: 18px;
+    }
    
 `;
 

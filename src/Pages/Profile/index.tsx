@@ -36,15 +36,15 @@ const Profile:React.FC = () => {
     const [profileView2, setProfileView2] = useState(false);
     const [accountView, setAccountView] = useState(true);
 
-    const handleProfileView = useCallback(() => {
-        setProfileView1(!profileView1);
-        setProfileView2(!profileView2);
-    }, [profileView1, profileView2]);
-
     const handleAccountView = useCallback(() => {
         setAccountView(!accountView);
         console.log(accountView);
     }, [accountView]);
+
+    const handleProfileView = useCallback(() => {
+        setProfileView1(!profileView1);
+        setProfileView2(!profileView2);
+    }, [profileView1, profileView2]);
 
     const handleProfileSubmit = useCallback(() => {
         profileFormRef.current?.submitForm();
@@ -124,7 +124,7 @@ const Profile:React.FC = () => {
                                     <FiUser />
                                     Meu Perfil
                                 </ButtonView>
-                                <ButtonView>
+                                <ButtonView type="button">
                                     <FiTrash2 />
                                     Excluir minha conta
                                 </ButtonView>
