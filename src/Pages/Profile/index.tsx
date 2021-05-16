@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
 import Header from '../../Components/Header';
+import ConfirmationModal from '../../Components/ConfirmationModal';
 
 import {
     Container,
@@ -31,6 +32,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 const Profile:React.FC = () => {
     const accountFormRef = useRef<FormHandles>(null);
     const profileFormRef = useRef<FormHandles>(null);
+    const [modalPasswordChange, setModalPasswordChange] = useState(true);
 
     const [profileView1, setProfileView1] = useState(true);
     const [profileView2, setProfileView2] = useState(false);
@@ -49,6 +51,15 @@ const Profile:React.FC = () => {
     const handleProfileSubmit = useCallback(() => {
         profileFormRef.current?.submitForm();
     }, [profileFormRef]);
+
+    const handleModalVisible = useCallback(() => {
+        setModalPasswordChange(!modalPasswordChange);
+    }, [modalPasswordChange]);
+
+    const handlePasswordChange = useCallback(() => {
+        setModalPasswordChange(!modalPasswordChange);
+    }, [modalPasswordChange]);
+    
 
     useEffect(() => {
 
@@ -108,6 +119,15 @@ const Profile:React.FC = () => {
     <Container>
             <Header pagename="profile"/>
             <ProfileDiv>
+                {
+                    modalPasswordChange && 
+                        <ConfirmationModal 
+                        title="Confirmar alteração de sua senha?" 
+                        subtitle="Confirme que faça uma senha dificil para sua conta não ser acessada por outros." 
+                        onClose={() => handleModalVisible} 
+                        onConfirmation={() => handlePasswordChange}
+                    />
+                }
                 <ProfileBox>
                     {accountView ? 
                         <>
@@ -118,6 +138,7 @@ const Profile:React.FC = () => {
                                 <Input name="new_password" placeholder="Nova Senha" icon={FiLock} type="password" />
                                 <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} type="password" />
                                 <Button type="submit">Alterar senha</Button>
+                               
                             </AccountForm>
                             <ButtonDiv>
                                 <ButtonView type="button" onClick={handleAccountView}>
