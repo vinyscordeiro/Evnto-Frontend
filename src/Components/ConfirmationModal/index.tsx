@@ -1,19 +1,19 @@
 import { FiX } from 'react-icons/fi';
-import {Container, ModalContainer, CancelButton,ConfirmationButton,Subitle,Title} from './styles';
+import { Container, ModalContainer, CancelButton, ConfirmationButton, Subitle, Title } from './styles';
 
 export interface ConfirmationProps {
     title: string;
     subtitle: string;
-    onClose: () => {};
+    onClose: () => void;
     onConfirmation: () => {};
-    color ?: "blue" | "red" | "green";
+    color?: "blue" | "red" | "green";
 
     // Passar também função como parâmetro para ser executada quando o Confirmation button for chamado
 }
 
-const ConfirmationModal = ({title, subtitle, color="blue", onClose, onConfirmation}: ConfirmationProps) =>  {
+const ConfirmationModal = ({ title, subtitle, color = "blue", onClose, onConfirmation }: ConfirmationProps) => {
 
-    return(
+    return (
         <Container>
             <ModalContainer>
                 <CancelButton type="button" onClick={() => onClose}>
