@@ -203,6 +203,10 @@ export const ParticipantLink = styled(Link)`
     margin-left: 24px;
     color: #000;
 
+    > svg {
+        margin-right: 4px;
+    }
+
     &:hover{
         color: #4E7EF4;
     }

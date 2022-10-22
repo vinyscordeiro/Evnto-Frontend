@@ -1,4 +1,4 @@
-import {useState, useCallback, useRef, useEffect} from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
@@ -22,26 +22,31 @@ import {
     ButtonDiv,
 } from './styles';
 
-import {FiAtSign, FiCalendar, FiChevronsLeft, FiChevronsRight, FiLock, FiMail, FiMap, FiMapPin, FiSave, FiTool, FiTrash2, FiUser, FiUsers} from 'react-icons/fi';
+import { FiAtSign, FiCalendar, FiChevronsLeft, FiChevronsRight, FiLock, FiMail, FiMap, FiMapPin, FiSave, FiTool, FiTrash2, FiUser, FiUsers } from 'react-icons/fi';
 
 import profile from '../../assets/profile.jpeg';
 import Button from '../../Components/Button';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-const Profile:React.FC = () => {
+const Profile: React.FC = () => {
     const accountFormRef = useRef<FormHandles>(null);
     const profileFormRef = useRef<FormHandles>(null);
-    const [modalPasswordChange, setModalPasswordChange] = useState(true);
+    const [modalPasswordChange, setModalPasswordChange] = useState(false);
+
+    const [profileView, setProfileView] = useState(true);
+    /*
+        Profile View true é referente gestão de perfil
+        Profile View false é referente a gestão de conta
+    */
 
     const [profileView1, setProfileView1] = useState(true);
     const [profileView2, setProfileView2] = useState(false);
-    const [accountView, setAccountView] = useState(true);
 
-    const handleAccountView = useCallback(() => {
-        setAccountView(!accountView);
-        console.log(accountView);
-    }, [accountView]);
+    const handleAccountView = useCallback((value: boolean) => {
+        setProfileView(value);
+        console.log(profileView);
+    }, []);
 
     const handleProfileView = useCallback(() => {
         setProfileView1(!profileView1);
@@ -53,44 +58,50 @@ const Profile:React.FC = () => {
     }, [profileFormRef]);
 
     const handleModalVisible = useCallback(() => {
-        setModalPasswordChange(!modalPasswordChange);
-    }, [modalPasswordChange]);
+        setModalPasswordChange(true);
+    }, []);
+
+    const handleModalClose = useCallback(() => {
+        setModalPasswordChange(false);
+        console.log("invisivel")
+    }, []);
 
     const handlePasswordChange = useCallback(() => {
-        setModalPasswordChange(!modalPasswordChange);
-    }, [modalPasswordChange]);
-    
+        setModalPasswordChange(false);
+    }, []);
+
 
     useEffect(() => {
 
-    },[]);
+    }, []);
 
-    const handlePasswordChangeSubmit = useCallback(async(data) => {
-        try{
+    const handlePasswordChangeSubmit = useCallback(async (data) => {
+        try {
             accountFormRef.current?.setErrors({});
             const schema = Yup.object().shape({
                 old_password: Yup.string().required('Senha antiga obrigatória'),
                 new_password: Yup.string().required('Senha Obrigatória').min(6, 'Minimo de seis digitos'),
                 new_password_confirmation: Yup.string()
-                .oneOf(
-                    [Yup.ref('password'), undefined],
-                    'Senhas precisam ser iguais',
-                ),
+                    .oneOf(
+                        [Yup.ref('password'), undefined],
+                        'Senhas precisam ser iguais',
+                    ),
             });
 
             await schema.validate(data, {
                 abortEarly: false,
             });
 
-        } catch(err){
-            const errors = getValidationErrors(err);
+        } catch (err) {
+            const formatedErr = err as Yup.ValidationError;
+            const errors = getValidationErrors(formatedErr);
             accountFormRef.current?.setErrors(errors);
         }
     }, []);
 
     const handleProfileChangeSubmit = useCallback(async (data) => {
         console.log(data);
-        try{
+        try {
 
             profileFormRef.current?.setErrors({});
 
@@ -109,105 +120,106 @@ const Profile:React.FC = () => {
                 abortEarly: false,
             });
 
-        }catch(err) {
-            const errors = getValidationErrors(err);
+        } catch (err) {
+            const formatedErr = err as Yup.ValidationError;
+            const errors = getValidationErrors(formatedErr);
             profileFormRef.current?.setErrors(errors);
         }
     }, []);
 
     return (
-    <Container>
-            <Header pagename="profile"/>
+        <Container>
+            <Header pagename="profile" />
             <ProfileDiv>
                 {
-                    modalPasswordChange && 
-                        <ConfirmationModal 
-                        title="Confirmar alteração de sua senha?" 
-                        subtitle="Confirme que faça uma senha dificil para sua conta não ser acessada por outros." 
-                        onClose={() => handleModalVisible} 
+                    modalPasswordChange &&
+                    <ConfirmationModal
+                        title="Confirmar alteração de sua senha?"
+                        subtitle="Confirme que faça uma senha dificil para sua conta não ser acessada por outros."
+                        onClose={() => handleModalClose}
                         onConfirmation={() => handlePasswordChange}
                     />
                 }
                 <ProfileBox>
-                    {accountView ? 
-                        <>
-                            <AccountForm ref={accountFormRef} onSubmit={handlePasswordChangeSubmit} >
-                                <AccountTitle>Configurações de conta</AccountTitle>
-                                <AccountSubtitle>Configurações de conta</AccountSubtitle>
-                                <Input name="old_password" placeholder="Senha antiga" icon={FiLock} type="password" />
-                                <Input name="new_password" placeholder="Nova Senha" icon={FiLock} type="password" />
-                                <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} type="password" />
-                                <Button type="submit">Alterar senha</Button>
-                               
-                            </AccountForm>
-                            <ButtonDiv>
-                                <ButtonView type="button" onClick={handleAccountView}>
-                                    <FiUser />
-                                    Meu Perfil
-                                </ButtonView>
-                                <ButtonView type="button">
-                                    <FiTrash2 />
-                                    Excluir minha conta
-                                </ButtonView>
-                            </ButtonDiv>
-                        </>
-                        :
+                    {profileView ?
                         <>
                             <ProfileForm ref={profileFormRef} onSubmit={handleProfileChangeSubmit}>
-                                <Photo src={profile} width="184px" height="184px"/>
+                                <Photo src={profile} width="184px" height="184px" />
                                 <Title>Perfil</Title>
-                                    <ChangeView>
-                                        <View isSelected={profileView1} onClick={handleProfileView} />
-                                        <View isSelected={profileView2} onClick={handleProfileView} />
-                                    </ChangeView>
-                                
-                                    <InputsDiv available={profileView1}>
-                                        <Input name="name" placeholder="Nome" icon={FiUser} />
-                                        <Input name="user" placeholder="Usuário" icon={FiAtSign}/>
-                                        <Input name="mail" placeholder="Email" icon={FiMail}/>
-                                        <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
-                                    </InputsDiv>
+                                <ChangeView>
+                                    <View isSelected={profileView1} onClick={handleProfileView} />
+                                    <View isSelected={profileView2} onClick={handleProfileView} />
+                                </ChangeView>
 
-                                    <InputsDiv available={profileView2}>
-                                        <Input name="sex" placeholder="Sexo" icon={FiUsers} />
-                                        <Input name="adress" placeholder="Endereço" icon={FiMapPin} />
-                                        <Input name="city" placeholder="Cidade" icon={FiMap}/>
-                                        <Input name="country" placeholder="Paìs" icon={FiMap}/>
-                                    </InputsDiv>
-                        
+                                <InputsDiv available={profileView1}>
+                                    <Input name="name" placeholder="Nome" icon={FiUser} />
+                                    <Input name="user" placeholder="Usuário" icon={FiAtSign} />
+                                    <Input name="mail" placeholder="Email" icon={FiMail} />
+                                    <Input name="birthday" placeholder="Data de nascimento" icon={FiCalendar} />
+                                </InputsDiv>
+
+                                <InputsDiv available={profileView2}>
+                                    <Input name="sex" placeholder="Sexo" icon={FiUsers} />
+                                    <Input name="adress" placeholder="Endereço" icon={FiMapPin} />
+                                    <Input name="city" placeholder="Cidade" icon={FiMap} />
+                                    <Input name="country" placeholder="Paìs" icon={FiMap} />
+                                </InputsDiv>
+
                             </ProfileForm>
 
                             <ButtonDiv>
-                                { profileView1 && 
-                                <>
-                                    <ButtonView>
-                                        <FiTool type="button" onClick={handleAccountView} />
-                                        Configuração de conta
-                                    </ButtonView>
-                                    <ButtonView type="button" onClick={handleProfileView}>
-                                        Seguinte
-                                        <FiChevronsRight />
-                                    </ButtonView>
-                                </>
+                                {profileView1 &&
+                                    <>
+                                        <ButtonView type="button" onClick={() => handleAccountView(false)} >
+                                            <FiTool />
+                                            Configuração de conta
+                                        </ButtonView>
+                                        <ButtonView type="button" onClick={handleProfileView}>
+                                            Seguinte
+                                            <FiChevronsRight />
+                                        </ButtonView>
+                                    </>
                                 }
-                                { profileView2 && 
-                                <>
-                                    <ButtonView type="button" onClick={handleProfileView}>
-                                        <FiChevronsLeft />
-                                        Anterior
-                                    </ButtonView>
-                                    <ButtonView type="submit" onClick={handleProfileSubmit} >
-                                        Salvar Alterações
-                                        <FiSave />
-                                    </ButtonView>
-                                </>
+                                {profileView2 &&
+                                    <>
+                                        <ButtonView type="button" onClick={handleProfileView}>
+                                            <FiChevronsLeft />
+                                            Anterior
+                                        </ButtonView>
+                                        <ButtonView type="submit" onClick={handleProfileSubmit} >
+                                            Salvar Alterações
+                                            <FiSave />
+                                        </ButtonView>
+                                    </>
                                 }
                             </ButtonDiv>
                         </>
-                    }
+                :
+                    <>
+                        <AccountForm ref={accountFormRef} onSubmit={handlePasswordChangeSubmit} >
+                            <AccountTitle>Configurações de conta</AccountTitle>
+                            <AccountSubtitle>Gestão de senha</AccountSubtitle>
+                            <Input name="old_password" placeholder="Senha antiga" icon={FiLock} type="password" />
+                            <Input name="new_password" placeholder="Nova Senha" icon={FiLock} type="password" />
+                            <Input name="new_password_confirmation" placeholder="Confirmar nova senha" icon={FiLock} type="password" />
+                            <Button type="submit">Alterar senha</Button>
+
+                        </AccountForm>
+                        <ButtonDiv>
+                            <ButtonView type="button" onClick={() => handleAccountView(true)}>
+                                <FiUser />
+                                Meu Perfil
+                            </ButtonView>
+                            <ButtonView type="button" onClick={handleModalVisible} >
+                                <FiTrash2 />
+                                Excluir minha conta
+                            </ButtonView>
+                        </ButtonDiv>
+                    </>
+                }
                 </ProfileBox>
             </ProfileDiv>
-    </Container>
+        </Container>
     );
 }
 

@@ -81,6 +81,7 @@ export const Info = styled.div`
     justify-content: center;
     width: 33%;
     text-align: center;
+    padding: 5px;
 
     svg {
         color: #4661C2;

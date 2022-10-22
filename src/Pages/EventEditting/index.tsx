@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2 } from 'react-icons/fi';
+import { FiCalendar, FiClipboard, FiEdit, FiSave, FiEye, FiTrash2, FiPlus } from 'react-icons/fi';
 
 import BarComponent from '../../Components/BarComponent';
 import Header from '../../Components/Header';
@@ -56,7 +56,8 @@ const EventEditting: React.FC = () => {
             });
 
         } catch(err) {
-            const errors = getValidationErrors(err);
+            const formattedError = err as Yup.ValidationError;
+            const errors = getValidationErrors(formattedError);
             formRef.current?.setErrors(errors);
         }
     },[]);
@@ -132,7 +133,10 @@ const EventEditting: React.FC = () => {
                             </BarComponent>
 
                             <BarComponent title="Participantes" >
-                            <ParticipantLink to="/participants">Mais detalhes</ParticipantLink>
+                            <ParticipantLink to="/participants">
+                                <FiPlus size={12}/>
+                                Mais detalhes
+                            </ParticipantLink>
                             </BarComponent>
 
                             <BarComponent title="Definições">

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import {FiCalendar, FiMap, FiClipboard} from 'react-icons/fi';
+import {FiCalendar, FiMap, FiClipboard, FiSettings} from 'react-icons/fi';
 
 import Header from '../../Components/Header';
 
@@ -12,7 +12,9 @@ import {
     Subtitle,
     Event,
     EventContainer,
-    EventText
+    EventText,
+    Organizer,
+    OrganizerFlag
 } from './styles';
 
 const MyEvents:React.FC = () => {
@@ -51,8 +53,13 @@ const MyEvents:React.FC = () => {
                 </EventSelection>
 
                { eventNow && <>
+
                     <Event to="/eventuse">
                         <EventContainer>
+                            <Organizer isOrganizer={true}> 
+                                <OrganizerFlag />
+                                <FiSettings />
+                            </Organizer>
                             <EventText>Retiro Seguindo seus passos</EventText>
                         </EventContainer>
                         <EventContainer>

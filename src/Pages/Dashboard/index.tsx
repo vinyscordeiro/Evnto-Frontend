@@ -65,13 +65,12 @@ const Dashboard:React.FC = () => {
             },
             {
                 id: 7,
-                name:"Festival de invernoaaaaaaaaaaaaaaaaaaaaa aldkfnvsjdkf n dfvdjfsgrjkf",
+                name:"Festival de invernoa de vitória da conquista na bahia aldkfnvsjdkf n dfvdjfsgrjkf",
                 date: "24/12/2021 a 27/12/2021",
                 location: "Parque de exposição"
             },
         ]);
 
-        console.log(events);
     },[events]);
 
     return (
