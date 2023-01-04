@@ -55,7 +55,7 @@ const EventEditting: React.FC = () => {
                 abortEarly: false,
             });
 
-        } catch(err) {
+        } catch(err: any) {
             const formattedError = err as Yup.ValidationError;
             const errors = getValidationErrors(formattedError);
             formRef.current?.setErrors(errors);

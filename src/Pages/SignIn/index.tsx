@@ -58,7 +58,7 @@ const SignIn:React.FC = () => {
             history.push('/dashboard');
 
         
-        } catch(err){
+        } catch(err: any){
             console.log(err);
             const errors = getValidationErrors(err);
 

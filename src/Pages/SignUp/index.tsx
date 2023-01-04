@@ -81,7 +81,7 @@ const SignUp:React.FC = () => {
                 right: false
             });
 
-        }catch(err) {
+        }catch(err: any) {
             const errors = getValidationErrors(err);
             formRef.current?.setErrors(errors);
 

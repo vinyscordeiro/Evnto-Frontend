@@ -33,7 +33,7 @@ const ForgotPassword:React.FC = () => {
                 abortEarly: false,
             });
 
-        } catch(err) {
+        } catch(err: any) {
             const errors = getValidationErrors(err);
             formRef.current?.setErrors(errors);
         }
