@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 
-import { FiClipboard, FiHome, FiPlus, FiUser } from 'react-icons/fi';
+import { FiHome, FiUser, FiClipboard, FiPlus } from 'react-icons/fi';
 
 import Profile from '../../assets/profile.jpeg';
 

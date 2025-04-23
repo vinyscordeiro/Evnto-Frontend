@@ -1,5 +1,5 @@
 import React, {createContext, useCallback, useContext, useState} from 'react';
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import ToastContainer from '../Components/ToastContainer'
 
 interface ToastContextObject {
@@ -15,14 +15,18 @@ export interface ToastProps {
     right?: boolean;
 }
 
+interface ToastProviderProps {
+  children: React.ReactNode;
+}
+
 const ToastContext = createContext<ToastContextObject>({} as ToastContextObject);
 
-export const ToastProvider: React.FC = ({children}) => {
+export const ToastProvider: React.FC<ToastProviderProps> = ({children}) => {
     const [messages, setMessages] = useState<ToastProps[]>([]);
     const [inRight, setInRight] = useState(true);
 
     const addToast =  useCallback(({title, subtitle, type, right}:Omit<ToastProps, 'id'>) => {
-        const id = uuid();
+        const id = uuidv4();
         setInRight(!!right);
     
         const toast = {

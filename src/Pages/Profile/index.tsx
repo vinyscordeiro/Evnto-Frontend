@@ -22,7 +22,7 @@ import {
     ButtonDiv,
 } from './styles';
 
-import { FiAtSign, FiCalendar, FiChevronsLeft, FiChevronsRight, FiLock, FiMail, FiMap, FiMapPin, FiSave, FiTool, FiTrash2, FiUser, FiUsers } from 'react-icons/fi';
+import { FiUser, FiAtSign, FiMail, FiCalendar, FiUsers, FiMapPin, FiMap, FiLock, FiTool, FiChevronsRight, FiChevronsLeft, FiSave, FiTrash2 } from 'react-icons/fi';
 
 import profile from '../../assets/profile.jpeg';
 import Button from '../../Components/Button';
@@ -75,7 +75,7 @@ const Profile: React.FC = () => {
 
     }, []);
 
-    const handlePasswordChangeSubmit = useCallback(async (data) => {
+    const handlePasswordChangeSubmit = useCallback(async (data: any) => {
         try {
             accountFormRef.current?.setErrors({});
             const schema = Yup.object().shape({
@@ -99,7 +99,7 @@ const Profile: React.FC = () => {
         }
     }, []);
 
-    const handleProfileChangeSubmit = useCallback(async (data) => {
+    const handleProfileChangeSubmit = useCallback(async (data: any) => {
         console.log(data);
         try {
 
@@ -143,7 +143,12 @@ const Profile: React.FC = () => {
                 <ProfileBox>
                     {profileView ?
                         <>
-                            <ProfileForm ref={profileFormRef} onSubmit={handleProfileChangeSubmit}>
+                            <ProfileForm 
+                                ref={profileFormRef} 
+                                onSubmit={handleProfileChangeSubmit}
+                                placeholder={""}
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}>
                                 <Photo src={profile} width="184px" height="184px" />
                                 <Title>Perfil</Title>
                                 <ChangeView>
@@ -196,7 +201,12 @@ const Profile: React.FC = () => {
                         </>
                 :
                     <>
-                        <AccountForm ref={accountFormRef} onSubmit={handlePasswordChangeSubmit} >
+                        <AccountForm 
+                            ref={accountFormRef} 
+                            onSubmit={handlePasswordChangeSubmit} 
+                            placeholder={""}
+                            onPointerEnterCapture={() => {}}
+                            onPointerLeaveCapture={() => {}}>
                             <AccountTitle>Configurações de conta</AccountTitle>
                             <AccountSubtitle>Gestão de senha</AccountSubtitle>
                             <Input name="old_password" placeholder="Senha antiga" icon={FiLock} type="password" />

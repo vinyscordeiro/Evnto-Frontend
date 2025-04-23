@@ -28,7 +28,7 @@ const RecoverPassword:React.FC = () => {
     const {addToast} = useToast();
 
 
-    const handleSubmit = useCallback(async (data) => {
+    const handleSubmit = useCallback(async (data: any) => {
         console.log(data);
         try{
             formRef.current?.setErrors({});
@@ -37,7 +37,7 @@ const RecoverPassword:React.FC = () => {
                 password_confirmation: Yup.string()
                     .required('Confirmação de senha obrigatória')
                     .oneOf(
-                    [Yup.ref('password'), undefined],
+                    [Yup.ref('password')],
                     'Senhas precisam ser iguais',
                     ),
             });
@@ -63,7 +63,12 @@ const RecoverPassword:React.FC = () => {
     <Container>
         <Header/>
         <RecoverPasswordDiv>
-            <RecoverPasswordForm ref={formRef} onSubmit={handleSubmit}>
+            <RecoverPasswordForm 
+                ref={formRef} 
+                onSubmit={handleSubmit}
+                placeholder="Digite o nome do evento que deseja participar"
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}>
                 <Title>Recuperar sua senha ?</Title>
                 <Subtitle>Podes agora colocar sua nova senha!</Subtitle>
 

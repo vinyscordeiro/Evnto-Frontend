@@ -17,10 +17,11 @@ import {
     View,
     InputsDiv,
     ButtonAdapted,
-    SignUpForm,
     SignInLink,
-    SignInDiv
+    SignInDiv,
+    SignUpForm
 } from './styles';
+
 
 import {
     FiLogIn,
@@ -46,10 +47,9 @@ const SignUp:React.FC = () => {
         setView2(!view2);
     }, [view1, view2]);
 
-    const handleSubmit = useCallback(async (data) => {
-        console.log(data);
-        try{
-
+    const handleSubmit = useCallback(async (data: any) => {
+        console.log('Dados recebidos no handleSubmit:', data);
+        try {
             formRef.current?.setErrors({});
 
             const schema = Yup.object().shape({
@@ -65,8 +65,8 @@ const SignUp:React.FC = () => {
                 password_confirmation: Yup.string()
                     .required('Confirmação de senha obrigatória')
                     .oneOf(
-                    [Yup.ref('password'), undefined],
-                    'Senhas precisam ser iguais',
+                    [Yup.ref('password')],
+                    'Senhas precisam ser iguais'
                     ),
             });
 
@@ -74,19 +74,21 @@ const SignUp:React.FC = () => {
                 abortEarly: false,
             });
 
+            console.log('Validação bem-sucedida:', data);
+
             addToast({
                 title: 'Conta criada com sucesso',
                 subtitle: 'Podes agora fazer login na página inicial.',
                 type: 'sucess',
                 right: false
             });
-
-        }catch(err: any) {
+        } catch (err: any) {
+            console.error('Erro durante a validação:', err);
             const errors = getValidationErrors(err);
             formRef.current?.setErrors(errors);
 
             if (err instanceof Yup.ValidationError) {
-               return;
+                return;
             } else {
                 addToast({
                     title: 'Erro ao criar sua conta',
@@ -96,7 +98,6 @@ const SignUp:React.FC = () => {
                 });
             }
         }
-        
     }, [addToast]);
 
     return (
@@ -104,7 +105,13 @@ const SignUp:React.FC = () => {
         <Header />
             <SignUpDiv>
                 <SignUpCenteredDiv>
-                    <SignUpForm ref={formRef} onSubmit={handleSubmit}>
+                    <SignUpForm
+                        ref={formRef}
+                        onSubmit={handleSubmit}
+                        placeholder="Preencha os campos corretamente"
+                        onPointerEnterCapture={() => {}}
+                        onPointerLeaveCapture={() => {}}
+                    >
                         <Title>Cadastro</Title>
 
                         <ChangeView>
