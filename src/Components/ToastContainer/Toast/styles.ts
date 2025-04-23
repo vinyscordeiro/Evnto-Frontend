@@ -1,11 +1,16 @@
 import styled, {css} from 'styled-components';
-import {animated} from 'react-spring';
 
 interface ToastProps{
     type?:string;
 }
 
-export const Container = styled(animated.div)<ToastProps>`
+/*
+import {animated} from 'react-spring';
+
+
+*/
+
+export const Container = styled.div<ToastProps>`
     width: 100%;
     background-color: #4661C2;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
@@ -20,6 +25,8 @@ export const Container = styled(animated.div)<ToastProps>`
         background-color: #43A018;   
     `};
 `;
+
+
 
 export const ToastInfo = styled.div<ToastProps>`
     display: flex;

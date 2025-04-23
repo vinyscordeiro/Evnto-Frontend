@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import SignIn from '../Pages/SignIn';
 import ForgotPassword from '../Pages/ForgotPassword';
@@ -14,22 +14,20 @@ import Participants from '../Pages/Participants';
 
 import Error404 from '../Pages/404';
 
-const Routes: React.FC = () => (
-    <Switch>
-        <Route path="/" exact component={SignIn} />
-        <Route path="/forgotpassword" component={ForgotPassword} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/eventeditting" component={EventEditting} />
-        <Route path="/eventuse" component={EventUse} />
-        <Route path="/myevents" component={MyEvents} />
-        <Route path="/recoverpassword" component={RecoverPassword} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/participants" component={Participants} />
-
-        <Route path=""  component={Error404} />
-        
-    </Switch>
+const AppRoutes: React.FC = () => (
+    <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/eventeditting" element={<EventEditting />} />
+        <Route path="/eventuse" element={<EventUse />} />
+        <Route path="/myevents" element={<MyEvents />} />
+        <Route path="/recoverpassword" element={<RecoverPassword />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/participants" element={<Participants />} />
+        <Route path="*" element={<Error404 />} />
+    </Routes>
 );
 
-export default Routes;
+export default AppRoutes;

@@ -27,7 +27,11 @@ export const useAuth = () => {
     return context;
 }
 
-export const AuthProvider: React.FC = ({children}) => {
+interface AuthProviderProps {
+  children: React.ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [data,setData] = useState<AuthState>(() => {
         const token = localStorage.getItem("@Evnto:token");
         const user = localStorage.getItem("@Evnto:user");

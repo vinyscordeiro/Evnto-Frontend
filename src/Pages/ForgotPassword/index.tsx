@@ -21,7 +21,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 const ForgotPassword:React.FC = () => {
     const formRef = useRef<FormHandles>(null);
-    const handleSubmit = useCallback(async (data) => {
+    const handleSubmit = useCallback(async (data: any) => {
         console.log(data);
         try{
             formRef.current?.setErrors({});
@@ -43,7 +43,12 @@ const ForgotPassword:React.FC = () => {
     <Container>
         <Header pagename="profile"/>
         <ForgotPasswordDiv>
-            <ForgotPasswordForm ref={formRef} onSubmit={handleSubmit}>
+            <ForgotPasswordForm 
+                ref={formRef} 
+                onSubmit={handleSubmit}
+                placeholder="Digite o nome do evento que deseja participar"
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}>
                 <Title>Esqueceu sua senha ?</Title>
                 <Subtitle>Não é problema, podemos recuperar com seu email</Subtitle>
 

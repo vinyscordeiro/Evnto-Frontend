@@ -10,7 +10,7 @@ interface ToastProps{
     title: string;
     subtitle?: string;
     type?: 'sucess' | 'error' | 'info';
-    style: object;
+    style?: object;
 }
 
 const icons = {

@@ -1,8 +1,10 @@
 import React, {useCallback, useRef} from 'react';
 
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
 import {FormHandles} from '@unform/core';
+import { Form } from '@unform/web';
+import styled from 'styled-components';
 
 import getValidationErrors  from '../../utils/getValidationErrors';
 import {useAuth} from '../../hooks/AuthContext';
@@ -31,7 +33,7 @@ interface SignInObject {
 }
 
 const SignIn:React.FC = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const formRef = useRef<FormHandles>(null);
     const {signIn} = useAuth();
     const {addToast} = useToast();
@@ -55,7 +57,7 @@ const SignIn:React.FC = () => {
                 password: data.password
             });
 
-            history.push('/dashboard');
+            navigate('/dashboard');
 
         
         } catch(err: any){
@@ -71,7 +73,7 @@ const SignIn:React.FC = () => {
                 right: true
             });
         }
-    },[history, signIn, addToast]);
+    },[navigate, signIn, addToast]);
 
     return (
     <Container>
@@ -80,7 +82,13 @@ const SignIn:React.FC = () => {
         </HeaderContainer>
         <SignInContainer>
             <SignInBox>
-                <SignInBoxForm ref={formRef} onSubmit={handleSubmit}>
+                <SignInBoxForm
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  placeholder=""
+                  onPointerEnterCapture={() => {}}
+                  onPointerLeaveCapture={() => {}}
+                >
                     <Title>Faça seu Login </Title>
                     <Input name="mail" placeholder="Email" type="text" icon={FiMail} />
                     <Input name="password" placeholder="Senha" type="password" icon={FiLock} />

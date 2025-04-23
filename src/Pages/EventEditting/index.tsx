@@ -44,7 +44,7 @@ const EventEditting: React.FC = () => {
         formRef.current?.submitForm();
     },[formRef]);
 
-    const handleSubmit = useCallback(async(data) => {
+    const handleSubmit = useCallback(async(data: any) => {
         try{
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
@@ -78,7 +78,9 @@ const EventEditting: React.FC = () => {
                 </EventDescription>
 
                 <EventInfo>
-                   <EventInfoForm ref={formRef} onSubmit={handleSubmit} >
+                   <EventInfoForm 
+                   ref={formRef} placeholder="" onSubmit={handleSubmit} onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}>
                         <TextField name="name" title="Nome" />
                         <TextField name="theme" title="Tema" />
                         <TextField name="place" title="Local" />

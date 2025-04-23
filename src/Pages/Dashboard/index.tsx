@@ -12,7 +12,7 @@ import {
     Info,
 } from './styles';
 
-import {FiCalendar, FiMapPin} from 'react-icons/fi';
+import { FiCalendar, FiMapPin } from 'react-icons/fi';
 
 interface EventProps {
     id: number;
@@ -78,7 +78,11 @@ const Dashboard:React.FC = () => {
         <Header pagename="dashboard" />
         <Logo>EVNTO</Logo>
         
-        <SearchForm onSubmit={handleSubmit}>
+        <SearchForm 
+            onSubmit={handleSubmit} 
+            placeholder="Digite o nome do evento que deseja participar"
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}>
             <SearchBox name="search" placeholder="Digite o nome do evento que deseja participar" />
         </SearchForm>
 
